@@ -1,0 +1,22 @@
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -Wno-unused-parameter
+    - -Wunreachable-code 
+    - -Wshadow
+
+# Diagnostic section specific for C/CPP
+
+Hover:
+  ShowAKA: true
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true
+  BlockEnd: true
+
+Completion:
+  AllScopes: true

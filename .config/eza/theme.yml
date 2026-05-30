@@ -1,0 +1,91 @@
+colourful: true
+filekinds:
+  normal: { foreground: "#f8f8f2" }         # Foreground
+  directory: { foreground: "#ff79c6" }       # Purple
+  symlink: { foreground: "#8be9fd" }         # Cyan
+  pipe: { foreground: "#6272a4" }            # Comment
+  block_device: { foreground: "#ffb86c" }    # Orange
+  char_device: { foreground: "#ffb86c" }     # Orange
+  socket: { foreground: "#6272a4" }          # Comment
+  special: { foreground: "#ff79c6" }         # Pink
+  executable: { foreground: "#50fa7b" }      # Green
+  mount_point: { foreground: "#8be9fd" }     # Cyan
+perms:
+  user_read: { foreground: "#8be9fd" }       # Cyan
+  user_write: { foreground: "#bd93f9" }      # Purple
+  user_execute_file: { foreground: "#50fa7b" }   # Green
+  user_execute_other: { foreground: "#50fa7b" }  # Green
+  group_read: { foreground: "#8be9fd" }      # Cyan
+  group_write: { foreground: "#ffb86c" }     # Orange
+  group_execute: { foreground: "#50fa7b" }   # Green
+  other_read: { foreground: "#8be9fd" }      # Cyan
+  other_write: { foreground: "#ff5555" }     # Red
+  other_execute: { foreground: "#50fa7b" }   # Green
+  special_user_file: { foreground: "#ff5555" }   # Red
+  special_other: { foreground: "#ff5555" }   # Red (dark)
+  attribute: { foreground: "#6272a4" }       # Comment
+size:
+  major: { foreground: "#8be9fd" }           # Cyan
+  minor: { foreground: "#ff79c6" }           # Pink
+  number_byte: { foreground: "#6272a4" }     # Comment
+  number_kilo: { foreground: "#f8f8f2" }     # Foreground
+  number_mega: { foreground: "#8be9fd" }     # Cyan
+  number_giga: { foreground: "#ffb86c" }     # Orange
+  number_huge: { foreground: "#ff5555" }     # Red
+  unit_byte: { foreground: "#6272a4" }       # Comment
+  unit_kilo: { foreground: "#f8f8f2" }       # Foreground
+  unit_mega: { foreground: "#8be9fd" }       # Cyan
+  unit_giga: { foreground: "#ffb86c" }       # Orange
+  unit_huge: { foreground: "#ff5555" }       # Red
+users:
+  user_you: { foreground: "#bd93f9" }        # Purple
+  user_root: { foreground: "#ff5555" }       # Red
+  user_other: { foreground: "#8be9fd" }      # Cyan
+  group_yours: { foreground: "#8be9fd" }     # Cyan
+  group_root: { foreground: "#ff5555" }      # Red
+  group_other: { foreground: "#f8f8f2" }     # Foreground
+links:
+  normal: { foreground: "#8be9fd" }          # Cyan
+  multi_link_file: { foreground: "#ffb86c" } # Orange
+git:
+  new: { foreground: "#50fa7b" }             # Green
+  modified: { foreground: "#ffb86c" }        # Orange
+  deleted: { foreground: "#ff5555" }         # Red
+  renamed: { foreground: "#8be9fd" }         # Cyan
+  typechange: { foreground: "#f1fa8c" }      # Yellow
+  ignored: { foreground: "#6272a4" }         # Comment
+  conflicted: { foreground: "#ff5555" }      # Red
+git_repo:
+  branch_main: { foreground: "#bd93f9" }     # Purple
+  branch_other: { foreground: "#8be9fd" }    # Cyan
+  git_clean: { foreground: "#50fa7b" }       # Green
+  git_dirty: { foreground: "#ff5555" }       # Red
+security_context:
+  colon: { foreground: "#6272a4" }           # Comment
+  user: { foreground: "#bd93f9" }            # Purple
+  role: { foreground: "#8be9fd" }            # Cyan
+  typ: { foreground: "#50fa7b" }             # Green
+  range: { foreground: "#ff79c6" }           # Pink
+file_type:
+  image: { foreground: "#ff79c6" }           # Pink
+  video: { foreground: "#bd93f9" }           # Purple
+  music: { foreground: "#8be9fd" }           # Cyan
+  lossless: { foreground: "#50fa7b" }        # Green
+  crypto: { foreground: "#ff5555" }          # Red
+  document: { foreground: "#f8f8f2" }        # Foreground
+  compressed: { foreground: "#ffb86c" }      # Orange
+  temp: { foreground: "#6272a4" }            # Comment
+  compiled: { foreground: "#6272a4" }        # Comment
+  build: { foreground: "#f1fa8c" }           # Yellow
+  source: { foreground: "#bd93f9" }       # Yellow instead
+punctuation: { foreground: "#6272a4" }       # Comment
+date: { foreground: "#ffb86c" }   # Pink
+inode: { foreground: "#6272a4" }             # Comment
+blocks: { foreground: "#6272a4" }            # Comment
+header: { foreground: "#bd93f9" }            # Purple
+octal: { foreground: "#ffb86c" }             # Orange
+flags: { foreground: "#ff79c6" }             # Pink
+symlink_path: { foreground: "#8be9fd" }      # Cyan
+control_char: { foreground: "#ff5555" }      # Red
+broken_symlink: { foreground: "#ff5555" }    # Red
+broken_path_overlay: { foreground: "#ff5555" } # Red

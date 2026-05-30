@@ -1,0 +1,116 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "\"$(fastfetch.sh logo)\"",
+    "type": "kitty-icat",
+    "height": 18
+  },
+  "display": {
+    "separator": " │ ",
+    "bar": {
+      "char": {
+        "elapsed": "=", // █░
+        "total": "-"
+      },
+      "width": 13
+    },
+    "percent": {  
+      "type": 15
+    }
+  },
+  "modules": [
+    {
+      "type": "title",
+      "key": " ",
+      "format": "{6} {7} {8}"
+    },
+    {
+      "type": "custom",
+      "format": "{#cyan}╭──────────────────────────────────────────╮"
+    },
+    {// 
+      "type": "os",
+      "key": "{#cyan}│ {#red}󰣇 OS      ",
+      "format": "{2}                  {#cyan}│",
+      "keyColor": "red"
+    },
+    {
+        "type": "wm",
+        "key": "{#cyan}│ {#yellow} WM      ",
+        "format": "{2}                    {#cyan}│"
+    },
+    {
+      "type": "terminal",
+      "key": "{#cyan}│ {#yellow} Terminal",
+      "format": "tmux                        {#cyan}│"
+    },
+    {
+      "type": "shell",
+      "key": "{#cyan}│ {#red}  Shell  ",
+      "format": "{1}                         {#cyan}│",
+      "keyColor": "31"
+    },
+    {
+      "type": "custom",
+      "format": "{#cyan}╰──────────────────────────────────────────╯"
+    },
+    "break",
+    {
+        "type": "host",
+        "format": "{#green}{5} {1}",
+        "key": "{#green}  ",
+        "keyColor": "33"
+    },
+    {
+      "type": "custom",
+      "format": "{#green}╭──────────────────────────────────────────╮"
+    },
+    { // "format": "{1} @ {7}",
+      "type": "cpu",
+      "format": "Intel i5-1135G7 @ 4.20 GHz   {#green}│",
+      "key": "{#green}│ {#blue} CPU    "
+    },
+    {
+      "type": "gpu",
+      "format": "{1} {2}       {#green}│",
+      "key": "{#green}│ {#blue}󰊴 GPU    "
+    },
+    {
+      "type": "memory",
+      "key": "{#green}│ {#magenta}󰑭 Memory ",
+      "format": "{4}            {#green}│"
+    },
+    {
+      "type": "disk",
+      "key": "{#green}│ {#yellow}󰋊 Disk   ",
+      "folders": "/",
+      "format": "{13}            {#green}│"
+    },
+    {
+      "type": "battery",
+      "key": "{#green}│ {#green}󰁹 Battery",
+      "format": "{10}            {#green}│"
+    },
+    {
+      "type": "disk",
+      "key": "{#green}│ {#red}󱦟 OS Age ",
+      "folders": "/",
+      "format": "{days} days                      {#green}│"
+    },
+    // {
+    //   "type": "uptime",
+    //   "key": "{#green}│ {#red}󱫐 Uptime ",
+    //   "format": "{10}                      {#green}│"
+    // },
+    {
+      "type": "custom",
+      "format": "{#green}╰──────────────────────────────────────────╯"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    },
+    "break"
+  ]
+}

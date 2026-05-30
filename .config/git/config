@@ -1,0 +1,18 @@
+
+[user]
+	name = PAKIWASI
+	email = ullahwasi26@gmail.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	last = log -1 HEAD
+

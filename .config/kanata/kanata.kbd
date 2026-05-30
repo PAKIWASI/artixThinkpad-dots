@@ -1,0 +1,86 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  tab                                       i
+        a       s    d    f    g    h    j    k    l    ;    '    \
+  caps                          spc
+  lsft    <      v                                  n  m
+)
+
+(defalias
+  MOD_A (tap-hold 50 250 a lmet)
+  MOD_S (tap-hold 50 250 s lalt)
+  MOD_D (tap-hold 50 250 d lctl)
+  MOD_F (tap-hold 50 250 f lsft)
+
+  MOD_J (tap-hold 50 250 j rsft)
+  MOD_K (tap-hold 50 250 k rctl)
+  MOD_L (tap-hold 50 250 l ralt)
+  MOD_colon (tap-hold 50 250 ; rmet)
+
+  MOD_CAPS bspc
+  MOD_LSFT esc
+
+  MOD_SPC  (tap-hold 50 250 spc (layer-while-held nav)) 
+  MOD_EXTRA (tap-hold 50 250 < (layer-while-held arrow))
+
+  MOD_N (tap-hold 50 250 n (macro C-a u))
+  MOD_M (tap-hold 50 250 m (macro C-a c))
+)
+
+(defalias
+  NAV_A 1
+  NAV_S (tap-hold 50 250 2 lalt)
+  NAV_D (tap-hold 50 250 3 lctl)
+  NAV_F (tap-hold 50 250 4 lsft)
+  NAV_G 5
+  NAV_H 6
+  NAV_J (tap-hold 50 250 7 rsft)
+  NAV_K (tap-hold 50 250 8 rctl)
+  NAV_L (tap-hold 50 250 9 ralt)
+  NAV_colon 0
+  NAV_QUOTE -
+  NAV_SLASH =
+  NAV_TAB grv
+)
+
+(defalias
+  DOUBLE_I(tap-dance 200 (i ret))
+  DOUBLE_V(tap-dance 200 (v esc))
+
+    ;; macros
+;;  DOUBLE_N(tap-dance 200 (n _ (macro C-a u)))
+;;  DOUBLE_M(tap-dance 200 (m _ (macro C-a c)))
+)
+
+(defalias
+  ARROW_H left
+  ARROW_J down
+  ARROW_K up
+  ARROW_L right
+)
+
+(deflayer base
+  tab                                @DOUBLE_I
+  @MOD_A @MOD_S @MOD_D @MOD_F  g   h    @MOD_J @MOD_K @MOD_L @MOD_colon ' \
+  @MOD_CAPS           @MOD_SPC
+  @MOD_LSFT  @MOD_EXTRA             @DOUBLE_V       @MOD_N     @MOD_M
+)
+
+(deflayer nav
+  @NAV_TAB                                @DOUBLE_I
+  @NAV_A @NAV_S @NAV_D @NAV_F @NAV_G @NAV_H @NAV_J @NAV_K @NAV_L @NAV_colon @NAV_QUOTE @NAV_SLASH
+  @MOD_CAPS       _
+  @MOD_LSFT     _               @DOUBLE_V       @MOD_N       @MOD_M
+)
+
+(deflayer arrow
+  _                                         _
+  _ _ _ _ _ @ARROW_H @ARROW_J @ARROW_K @ARROW_L _ _ _
+  _       _
+  _     _               _      _   _
+)
+
+
