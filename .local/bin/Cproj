@@ -1,0 +1,259 @@
+#!/usr/bin/zsh
+
+# C99 CMake Ninja Project Setup and Build Script
+
+set -e
+
+PROJECT_NAME="${1:-C99proj}"
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+echo "${GREEN}Setting up C99 CMake Ninja project: ${PROJECT_NAME}${NC}"
+
+# Check dependencies
+echo "${YELLOW}Checking dependencies...${NC}"
+for cmd in cmake ninja clang; do
+    if ! command -v $cmd &> /dev/null; then
+        echo "${RED}Error: $cmd is not installed${NC}"
+        echo "Install with: sudo pacman -S cmake ninja gcc"
+        exit 1
+    fi
+done
+
+# Create project directory
+echo "${YELLOW}Checking project directory...${NC}"
+if [[ -d "$PROJECT_NAME" ]]; then
+    echo "${RED}Error: Directory $PROJECT_NAME already exists${NC}"
+    exit 1
+fi
+
+mkdir "$PROJECT_NAME"
+cd "$PROJECT_NAME"
+
+# Create directory structure
+echo "${YELLOW}Creating directory structure...${NC}"
+mkdir -p src include build
+
+# Create CMakeLists.txt
+echo "${YELLOW}Creating CMakeLists.txt...${NC}"
+cat > CMakeLists.txt << EOF
+cmake_minimum_required(VERSION 3.20)
+
+set(CMAKE_C_COMPILER clang)
+
+project(${PROJECT_NAME} LANGUAGES C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+message(STATUS "C Compiler: \${CMAKE_C_COMPILER}")
+
+# Default to Debug if not specified
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+endif()
+
+message(STATUS "Build type: \${CMAKE_BUILD_TYPE}")
+
+# Debug configuration with sanitizers
+set(CMAKE_C_FLAGS_DEBUG "-g -O0 -fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined")
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG "-fsanitize=address -fsanitize=undefined")
+
+# Release configuration
+set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "")
+
+
+set(SRC_FILES
+    src/example.c
+)
+
+add_executable(main
+    src/main.c
+    \${SRC_FILES}
+)
+
+target_include_directories(main PRIVATE include)
+EOF
+
+# Create 
+
+echo "${YELLOW}Creating example files...${NC}"
+
+# Create sample header
+cat > include/example.h << 'EOF'
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
+
+void print_hello(void);
+
+#endif // EXAMPLE_H
+EOF
+
+# Create sample c file
+cat > src/example.c << 'EOF'
+#include "example.h"
+#include <stdio.h>
+
+void print_hello(void)
+{
+    printf("Hello from C11 CMake Ninja project!\n");
+}
+EOF
+
+# Create sample sources
+cat > src/main.c << 'EOF'
+#include "example.h"
+
+int main(void) 
+{
+    print_hello();
+
+    return 0;
+}
+EOF
+
+
+cat > .clangd << 'EOF'
+CompileFlags:
+  CompilationDatabase: build/
+  Add:
+    - -std=c11
+    - -Wpedantic
+    - -Wstrict-prototypes
+    - -Wconversion
+    - -Wwrite-strings
+    - -Wpointer-arith
+    - -Wformat=2
+    - -Wold-style-definition
+    - -Wnull-dereference
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - bugprone-*
+      - cert-*
+      - clang-analyzer-*
+      - performance-*
+      - portability-*
+      - readability-*
+      - misc-*
+    Remove:
+      - readability-magic-numbers
+      - readability-identifier-length
+      - readability-identifier-naming
+      - readability-function-cognitive-complexity
+      - readability-uppercase-literal-suffix
+      - readability-avoid-const-params-in-decls
+      - readability-isolate-declaration
+      - readability-non-const-parameter 
+      - readability-avoid-nested-conditional-operator
+      
+      - bugprone-easily-swappable-parameters
+      - bugprone-assignment-in-if-condition 
+
+      - cert-err33-c 
+      - cert-dcl03-c 
+
+      - misc-include-cleaner 
+      - misc-no-recursion
+EOF
+
+
+cat > .clang-format << 'EOF'
+BasedOnStyle: LLVM
+
+# Your custom brace style
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: Never
+  AfterClass: false
+  AfterStruct: false
+  AfterEnum: false
+  AfterNamespace: false
+  BeforeCatch: false
+  BeforeElse: false
+
+# Your alignment preferences
+AlignConsecutiveDeclarations: true
+AlignConsecutiveAssignments: true
+AlignConsecutiveMacros: true
+AlignEscapedNewlines: Left
+AlignTrailingComments: true
+
+# Spacing (your preferences)
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 3
+SortIncludes: true
+
+# Common sane defaults
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120                              # 80-120 is common
+
+# Pointer/reference alignment (pick one style)
+PointerAlignment: Left                        # int* ptr (more common in C)
+# PointerAlignment: Right                     # int *ptr (K&R style)
+
+# Function parameters
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackParameters: true                       # Pack params on fewer lines
+AlignAfterOpenBracket: Align                  # Align multi-line params
+
+# Control flow spacing
+SpaceBeforeParens: ControlStatements          # if (...) not if(...)
+SpaceBeforeAssignmentOperators: true          # x = 5 not x=5
+SpacesInParentheses: false                    # (x) not ( x )
+SpacesInSquareBrackets: false                 # [i] not [ i ]
+
+# Indentation
+IndentCaseLabels: false                       # Don't indent case: labels
+IndentPPDirectives: None                      # #ifdef at column 0
+IndentWrappedFunctionNames: false
+
+# Line breaking
+AllowShortFunctionsOnASingleLine: Inline            # Only inline/lambda on one line
+#AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+#AllowShortBlocksOnASingleLine: Always              # Also allows while/for single line
+#AllowShortLoopsOnASingleLine: true                 # while (x--) {}
+BreakBeforeBinaryOperators: None              # Operators at end of line
+#BreakBeforeTernaryOperators: true             # ? on new line
+
+# Other common settings
+ReflowComments: false                         # Don't rewrap comment paragraphs
+EOF
+
+
+
+cat > .gitignore << 'EOF'
+build/
+.cache
+EOF
+
+echo "${GREEN}✓ Project structure created${NC}"
+echo ""
+
+# Build the project
+echo "${YELLOW}Building project...${NC}"
+cmake -G Ninja -S . -B build/
+cd build
+ninja
+
+echo ""
+echo "${GREEN}✓ Build complete!${NC}"
+echo ""
+echo "${YELLOW}Running project...${NC}"
+echo
+./main
+echo
+echo "${GREEN}✓ Execution complete!${NC}"
+echo "Project created at: ${PWD:h}"
+
+

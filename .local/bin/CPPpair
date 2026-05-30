@@ -1,0 +1,52 @@
+#!/usr/bin/zsh
+
+set -e
+
+FILE_NAME="${1:-example}"
+CLASS_NAME="${2:-Example}"
+
+# Check if files already exist
+if [[ -f "src/${FILE_NAME}.cpp" ]] || [[ -f "include/${FILE_NAME}.hpp" ]]; then
+    echo "Error: Files already exist!"
+    echo "src/${FILE_NAME}.cpp or include/${FILE_NAME}.hpp already exists."
+    exit 1
+fi
+
+
+# check if dirctories exist
+if [[ ! -d "src" ]] || [[ ! -d "include" ]]; then
+    echo "Error: No src/ or include/ directories"
+    exit 1
+fi
+
+# Create header file with include guard
+cat > "include/${FILE_NAME}.hpp" << EOF
+#pragma once
+
+
+class ${CLASS_NAME} {
+private:
+
+public:
+    ${CLASS_NAME}();
+
+};
+
+EOF
+
+# Create source file
+cat > "src/${FILE_NAME}.cpp" << EOF
+#include "${FILE_NAME}.hpp"
+
+
+${CLASS_NAME}::${CLASS_NAME}() {
+
+}
+
+EOF
+
+echo "Created:"
+echo "  src/${FILE_NAME}.cpp"
+echo "  include/${FILE_NAME}.hpp"
+echo "  class ${CLASS_NAME}"
+

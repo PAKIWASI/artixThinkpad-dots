@@ -1,0 +1,145 @@
+#! /bin/bash
+
+
+#=============================================================
+#   Drop - Set a directory as a target to send files to
+#=============================================================
+
+
+set -o pipefail
+
+
+# persist drop target over multiple script calls
+TARGET="$HOME/.config/drop/target"
+mkdir -p "$(dirname "$TARGET")"
+
+# default directory target, set when resetting dir (called by user)
+DEFAULT_TARGET="$HOME"
+# set default target on initial run
+if [[ ! -f "$TARGET" ]]; then
+    echo "$DEFAULT_TARGET" > "$TARGET"
+fi
+
+
+helper() {
+    echo "Drop - Set a directory as a target to send files to"
+    echo
+    echo "Usage:"
+    echo "  Drop files (cp):  drop <file|dir> <file|dir> ..."
+    echo "  Drop files (mv):  drop mv <file|dir> <file|dir> ..."
+    echo "  Set target:       drop set <directory>"
+    echo "  Set target (fzf): drop set fzf"
+    echo "  Show target:      drop dir"
+    echo "  Reset target:     drop reset"
+}
+
+
+get_target() {
+    cat "$TARGET" 2>/dev/null
+}
+
+guard_dir() {
+    [[ ! -d "$1" ]] && { echo "Not a directory: $1"; exit 1; }
+}
+
+
+# main logic
+
+case "$1" in
+
+        # show current drop target
+    dir)
+        dir=$(get_target)
+        guard_dir "$dir"
+        echo "Current drop target: $dir"
+    ;;
+
+        # set new drop target
+    set)
+        if [[ $# -eq 1 ]]; then
+            # no extra argument, use current directory
+            dir="."
+        elif [[ "$2" == "fzf" ]]; then
+            # interactive selection
+            dir=$(find "$HOME" -type d -not -path '*/.*' 2>/dev/null | \
+                  fzf --prompt="Select drop target ❯ " \
+                      --height=40% \
+                      --layout=reverse \
+                      --preview 'ls -p {} | head -50') || exit 1
+        else
+            # use provided directory
+            dir="$2"
+        fi
+
+        # resolve full path and validate
+        dir=$(realpath "$dir" 2>/dev/null) || { echo "Invalid path"; exit 1; }
+        guard_dir "$dir"
+
+        # persist target
+        echo "$dir" > "$TARGET"
+        echo "Drop target set to: $dir"
+    ;;
+
+        # reset drop dir to default directory
+    reset)
+        dir=$DEFAULT_TARGET
+        guard_dir "$dir"
+
+        echo "$dir" > "$TARGET"
+        echo "Drop target reset to: $dir"
+    ;;
+
+        # move files (recursive) to the target
+    mv)
+        dir=$(get_target)
+        guard_dir "$dir"
+        [[ $# -eq 1 ]] && { helper; exit 1; }
+
+        shift   # first arg is mv
+        for item in "$@"; do
+
+            if [[ ! -e "$item" ]]; then
+                echo "Skipping (not found): $item"
+                continue
+            fi
+
+            if [[ "$item" -ef "$dir" ]]; then
+                echo "Skipping target directory itself"
+                continue
+            fi 
+
+            mv "$item" "$dir" && echo "Moved:  $item -> $dir"                   
+        done
+    ;;
+
+        # show help menu
+    help)
+        helper
+    ;;
+
+        # copy files (recursive) to the target
+    *)
+        dir=$(get_target)
+        guard_dir "$dir"
+        [[ $# -eq 0 ]] && { helper; exit 1; }
+
+        for item in "$@"; do
+
+            if [[ ! -e "$item" ]]; then
+                echo "Skipping (not found): $item"
+                continue
+            fi
+
+            if [[ "$item" -ef "$dir" ]]; then
+                echo "Skipping target directory itself"
+                continue
+            fi 
+
+            cp -r "$item" "$dir" && echo "Copied:  $item -> $dir"                   
+        done
+    ;;
+
+esac
+
+
+

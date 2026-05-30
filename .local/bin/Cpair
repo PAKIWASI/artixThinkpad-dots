@@ -1,0 +1,54 @@
+#!/usr/bin/zsh
+
+set -e
+
+FILE_NAME="${1:-example}"
+STRUCT_NAME="${2:-}"
+
+# Check if files already exist
+if [[ -f "src/${FILE_NAME}.c" ]] || [[ -f "include/${FILE_NAME}.h" ]]; then
+    echo "Error: Files already exist!"
+    echo "src/${FILE_NAME}.c or include/${FILE_NAME}.h already exists."
+    exit 1
+fi
+
+# Check if directories exist
+if [[ ! -d "src" ]] || [[ ! -d "include" ]]; then
+    echo "Error: No src/ or include/ directories"
+    exit 1
+fi
+
+# Create header file with conditional struct
+cat > "include/${FILE_NAME}.h" << EOF
+#ifndef ${FILE_NAME:u}_H
+#define ${FILE_NAME:u}_H
+EOF
+
+
+# Add struct only if STRUCT_NAME is provided
+if [[ -n "$STRUCT_NAME" ]]; then
+    cat >> "include/${FILE_NAME}.h" << EOF
+
+typedef struct {
+    
+} ${STRUCT_NAME};
+
+EOF
+fi
+
+# Add the ending header gaurd
+echo "#endif // ${FILE_NAME:u}_H" >> "include/${FILE_NAME}.h"
+
+# Create source file
+cat > "src/${FILE_NAME}.c" << EOF
+#include "${FILE_NAME}.h"
+
+EOF
+
+
+echo "Created:"
+echo "  src/${FILE_NAME}.c"
+echo "  include/${FILE_NAME}.h"
+if [[ -n "$STRUCT_NAME" ]]; then
+    echo "  struct: ${STRUCT_NAME}"
+fi
