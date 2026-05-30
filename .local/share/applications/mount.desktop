@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Usb-Mount
+Exec=/home/wasi/.config/fuzzel/scripts/usb_mount.sh
+Icon=drive-removable-media-usb
+Type=Application
+Categories=System;FileManager;

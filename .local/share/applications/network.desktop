@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Network
+Exec=/home/wasi/.config/fuzzel/scripts/network.sh
+Icon=network-wireless
+Type=Application
+Categories=Network;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Bluetooth
+Exec=/home/wasi/.config/fuzzel/scripts/bluetooth.sh
+Icon=bluetooth
+Type=Application
+Categories=Network;
