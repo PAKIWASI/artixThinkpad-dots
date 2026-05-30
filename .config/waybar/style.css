@@ -44,6 +44,7 @@ window#waybar {
 
 #window,
 #clock,
+#custom-idle-inhibit,
 #battery,
 #pulseaudio,
 #pulseaudio.microphone,
@@ -110,7 +111,7 @@ window#waybar {
 #bluetooth {
     color: @cyan;
     border-radius: 0px 10px 10px 0px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 #bluetooth.disabled {
@@ -141,6 +142,17 @@ window#waybar {
 
 #pulseaudio.microphone.muted {
     color: @comment;
+}
+
+
+#custom-idle-inhibit {
+    padding-right: 5px;
+    color: #6272a4;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#custom-idle-inhibit.active {
+    color: #ff79c6;
 }
 
 #battery {
@@ -179,13 +191,4 @@ window#waybar {
 
 #memory.critical {
     color: @red;
-}
-
-#custom-idle-inhibit {
-    padding: 0 8px;
-    color: #6272a4;
-}
-
-#custom-idle-inhibit.active {
-    color: #ff79c6;
 }

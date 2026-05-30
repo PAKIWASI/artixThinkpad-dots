@@ -9,7 +9,6 @@
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
-        "custom/idle-inhibit",
         "tray",
     ],
     "modules-center": ["clock"],
@@ -18,6 +17,7 @@
         "cpu",
         "network",
         "bluetooth",
+        "custom/idle-inhibit",
         "battery",
         "backlight",
         "pulseaudio",
@@ -142,7 +142,7 @@
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "󰖪  Disconnected",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "<span foreground='#8be9fd'> {bandwidthDownBytes}</span> <span foreground='#ffb86c'> {bandwidthUpBytes}</span>",
+        // "format-alt": "<span foreground='#8be9fd'> {bandwidthDownBytes}</span> <span foreground='#ffb86c'> {bandwidthUpBytes}</span>",
         "interval": 2,
         "on-click": "wifi toggle"
     },

@@ -25,9 +25,9 @@ case "$1" in
         ;;
     status)
         if [ -f "$COOKIE_FILE" ]; then
-            echo '{"text":"󰒲 Inhibited","class":"active","tooltip":"Idle inhibit enabled"}'
+            echo '{"text":" ","class":"active","tooltip":"Idle inhibit enabled"}'
         else
-            echo '{"text":"󰒳 Auto","class":"inactive","tooltip":"Idle inhibit disabled"}'
+            echo '{"text":"󰛊 ","class":"inactive","tooltip":"Idle inhibit disabled"}'
         fi
         ;;
 esac
