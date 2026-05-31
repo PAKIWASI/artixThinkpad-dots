@@ -122,7 +122,9 @@ window#waybar > box {
 #memory.warning        { color: @orange; }
 #memory.critical       { color: @red;    }
 
+#network.connected     { color: @pink; }
 #network.disconnected  { color: @selection; }
+#network.disabled      { color: @selection; }
 
 #bluetooth.connected   { color: @pink;      }
 #bluetooth.disabled    { color: @selection; }
