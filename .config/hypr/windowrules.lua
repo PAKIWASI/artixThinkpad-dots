@@ -4,11 +4,7 @@
 
 
 
--- TODO: 
--- layer rule to blur everything else when fuzzel window is opened
-
-
-
+-- idle inhibit some apps
 hl.window_rule({ match = { class =  "^(zen|zen-browser)$" }, idle_inhibit = "focus"})
 hl.window_rule({ match = { class =  "^([Ss]potify)$" }, idle_inhibit = "focus"})
 hl.window_rule({ match = { class =  "^(mpv)$" }, idle_inhibit = "focus"})
@@ -25,7 +21,6 @@ hl.window_rule( {
 })
 
 
-
 -- browser opens file picker etc
 hl.window_rule({
     name    = "xdg desktop portal windows",
@@ -35,16 +30,18 @@ hl.window_rule({
     size    = { "(monitor_w*0.5)", "(monitor_h*0.7)" }
 })
 
+
+-- Ignore maximize requests from all apps
 hl.window_rule({
-    -- Ignore maximize requests from all apps
     name  = "suppress-maximize-events",
     match = { class = ".*" },
 
     suppress_event = "maximize",
 })
 
+
+-- Fix some dragging issues with XWayland
 hl.window_rule({
-    -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
         class      = "^$",
@@ -59,7 +56,6 @@ hl.window_rule({
 })
 
 
-
 -- Hyprland-run windowrule
 hl.window_rule({
     name  = "move-hyprland-run",
@@ -67,6 +63,15 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+
+-- layer rule to blur everything else when fuzzel window is opened
+hl.layer_rule({
+    match = { namespace = "launcher" },
+    blur = true,
+    dim_around = true,
+    ignore_alpha = 0.5,
 })
 
 
