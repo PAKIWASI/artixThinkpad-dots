@@ -179,6 +179,7 @@ zvm_after_init() {
 alias sp='sudo pacman'
 alias sps='sudo pacman -S'
 alias spss='sudo pacman -Ss'
+alias spsi='sudo pacman -Si'
 alias spsyu='sudo pacman -Syu'
 alias spr='sudo pacman -R'
 alias sprns='sudo pacman -Rns'

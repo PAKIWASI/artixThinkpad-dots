@@ -85,6 +85,11 @@ window#waybar > box {
     -gtk-icon-effect: highlight;
 }
 
+#custom-playerctl {
+    color: @comment;
+    padding: 0 12px;
+}
+
 /* Center */
 
 #clock {
@@ -122,16 +127,17 @@ window#waybar > box {
 #memory.warning        { color: @orange; }
 #memory.critical       { color: @red;    }
 
-#network.connected     { color: @pink; }
+#network.wifi          { color: @pink;      }
+#network.ethernet      { color: @pink;      }
 #network.disconnected  { color: @selection; }
 #network.disabled      { color: @selection; }
+#network.linked        { color: @selection; }
 
+#bluetooth.on          { color: @pink;      }
 #bluetooth.connected   { color: @pink;      }
 #bluetooth.disabled    { color: @selection; }
 
 #pulseaudio.muted            { color: @selection; }
-/* not working? added a span in the jsonc */
 #pulseaudio.microphone.muted { color: @selection; }
 
 #custom-idle-inhibit.active  { color: @pink; }
-

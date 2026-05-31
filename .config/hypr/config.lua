@@ -16,7 +16,7 @@ hl.config({
         border_size = 1,
 
         col = {
-            active_border   = { colors = { c.main, c.accent .. "ee" }, angle = 45 },
+            active_border   = { colors = { c.accent, c.main .. "ee" }, angle = 45 },
             inactive_border = { colors = { c.green .. "aa", c.cyan .. "aa"}, angle = 45 },
         },
 
@@ -85,8 +85,9 @@ hl.config({
 
 
     misc = {
-        force_default_wallpaper = -1,
-        disable_hyprland_logo   = false,
+        force_default_wallpaper = 0,
+        disable_hyprland_logo = true,
+        disable_splash_rendering = true,
     },
 })
 

@@ -11,6 +11,7 @@
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
+        "custom/playerctl",
         "tray",
     ],
     "modules-center": ["clock"],
@@ -92,19 +93,19 @@
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": " ",
+            "headphone": " ",
             "hands-free": "",
-            "headset": " ",
-            "phone": " ",
+            "headset": " ",
+            "phone": " ",
             "portable": "",
-            "car": " ",
-            "default": ["󰕿", "󰖀", "󰕾", ""]
+            "car": " ",
+            "default": ["󰕿", "󰖀", "󰕾", ""]
         }
     },
 
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": " {volume}%",
+        "format-source": " {volume}%",
         "format-source-muted": "<span color='#44475a'>󰍭 Muted </span>",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
@@ -144,7 +145,7 @@
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "󰖪  Disconnected",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "<span foreground='#6272a4'>󰖪  Off</span>",
+        "format-alt": "󰖪  Off",
         "interval": 2,
         "on-click": "wifi toggle"
     },
@@ -167,7 +168,14 @@
         "return-type": "json",
         "on-click": "~/.config/waybar/scripts/idle_inhibit.sh toggle",
         "signal": 8
+    },
+
+    "custom/playerctl": {
+        "exec": "playerctl metadata --format '{{emoji(status)}} {{artist}} — {{title}}' 2>/dev/null",
+        "interval": 2,
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
     }
-
-
 }
