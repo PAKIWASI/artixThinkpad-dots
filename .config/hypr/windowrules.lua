@@ -2,6 +2,39 @@
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
+
+
+-- TODO: 
+-- layer rule to blur everything else when fuzzel window is opened
+
+
+
+hl.window_rule({ match = { class =  "^(zen|zen-browser)$" }, idle_inhibit = "focus"})
+hl.window_rule({ match = { class =  "^([Ss]potify)$" }, idle_inhibit = "focus"})
+hl.window_rule({ match = { class =  "^(mpv)$" }, idle_inhibit = "focus"})
+
+
+-- all picture in picture mini windows
+hl.window_rule( {
+    name    = "pip windows",
+    match   = { title = "^((?i)picture[-\\s]?in[-\\s]?picture.*)$"},
+    float   = true,
+    pin     = true,
+    move    = { "(monitor_w*.73)", "(monitor_h*.72)" },
+    size    = { "(monitor_w*.25)", "(monitor_h*.25)" }
+})
+
+
+
+-- browser opens file picker etc
+hl.window_rule({
+    name    = "xdg desktop portal windows",
+    match   = { class = "xdg-desktop-portal-gtk" },
+    float   = true,
+    center  = true,
+    size    = { "(monitor_w*0.5)", "(monitor_h*0.7)" }
+})
+
 hl.window_rule({
     -- Ignore maximize requests from all apps
     name  = "suppress-maximize-events",
@@ -25,10 +58,6 @@ hl.window_rule({
     no_focus = true,
 })
 
--- TODO: 
-hl.window_rule({
-    match = { class = "xdg-desktop-portal-gtk" },
-})
 
 
 -- Hyprland-run windowrule
