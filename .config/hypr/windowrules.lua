@@ -11,13 +11,35 @@ hl.window_rule({ match = { class =  "^(mpv)$" }, idle_inhibit = "focus"})
 
 
 -- all picture in picture mini windows
-hl.window_rule( {
+hl.window_rule({
     name    = "pip windows",
     match   = { title = "^((?i)picture[-\\s]?in[-\\s]?picture.*)$"},
     float   = true,
     pin     = true,
     move    = { "(monitor_w*.73)", "(monitor_h*.72)" },
     size    = { "(monitor_w*.25)", "(monitor_h*.25)" }
+})
+
+
+hl.window_rule({
+    name  = "pip windows chromium",
+    match = { class = "chromium-browser" },
+    float = true,
+    pin   = true,
+    move  = { "(monitor_w*.73)", "(monitor_h*.72)" },
+    size  = { "(monitor_w*.25)", "(monitor_h*.25)" }
+})
+
+-- BUG: doesnot work
+-- browser signins
+hl.window_rule({
+    name  = "browser auth popup",
+    match = {
+        title = "(?i)^(sign[-\\s]?in|sign[-\\s]?up|log[-\\s]?in|log[-\\s]?out|register|authorize|oauth|forgot[-\\s]?password|reset[-\\s]?password)"
+    },
+    float = true,
+    center  = true,
+    size    = { "(monitor_w*0.5)", "(monitor_h*0.7)" }
 })
 
 
