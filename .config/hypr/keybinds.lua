@@ -22,7 +22,7 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("bash " .. scripts .. 'screenshot.sh' .. " region"))
 hl.bind(mainMod .. " + CTRL + P",  hl.dsp.exec_cmd("bash " .. scripts .. 'screenshot.sh' .. " window"))
 hl.bind(mainMod .. " + ALT + P",   hl.dsp.exec_cmd("bash " .. scripts .. 'screenshot.sh' .. " output"))
-hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- Move focus with mainMod + arrow keys
