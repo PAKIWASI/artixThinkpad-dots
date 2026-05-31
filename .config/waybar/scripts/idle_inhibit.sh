@@ -1,32 +1,32 @@
 #!/usr/bin/env bash
 
-COOKIE_FILE="/tmp/idle-inhibit-cookie"
+LOCK_FILE="/tmp/idle-inhibit.lock"
+FD_FILE="/tmp/idle-inhibit.fd"
 
 case "$1" in
     toggle)
-        if [ -f "$COOKIE_FILE" ]; then
-            COOKIE=$(cat "$COOKIE_FILE")
-            dbus-send --session --dest=org.freedesktop.ScreenSaver \
-                --type=method_call \
-                /org/freedesktop/ScreenSaver \
-                org.freedesktop.ScreenSaver.UnInhibit \
-                uint32:"$COOKIE"
-            rm "$COOKIE_FILE"
+        if [ -f "$LOCK_FILE" ]; then
+            # Release the lock by killing the sleep holding the fd
+            PID=$(cat "$LOCK_FILE")
+            kill "$PID" 2>/dev/null
+            rm -f "$LOCK_FILE" "$FD_FILE"
         else
-            COOKIE=$(dbus-send --session --dest=org.freedesktop.ScreenSaver \
-                --type=method_call --print-reply \
-                /org/freedesktop/ScreenSaver \
-                org.freedesktop.ScreenSaver.Inhibit \
-                string:"waybar" string:"user requested" \
-                | awk '/uint32/ {print $2}')
-            echo "$COOKIE" > "$COOKIE_FILE"
+            # Acquire an inhibit lock via elogind-inhibit
+            elogind-inhibit --what=idle \
+                            --who="waybar" \
+                            --why="user requested" \
+                            --mode=block \
+                            sleep infinity &
+            echo $! > "$LOCK_FILE"
         fi
         pkill -RTMIN+8 waybar
         ;;
     status)
-        if [ -f "$COOKIE_FILE" ]; then
+        if [ -f "$LOCK_FILE" ] && kill -0 "$(cat "$LOCK_FILE")" 2>/dev/null; then
             echo '{"text":" ","class":"active","tooltip":"Idle inhibit enabled"}'
         else
+            # Clean up stale lock file if process is dead
+            rm -f "$LOCK_FILE"
             echo '{"text":"󰛊 ","class":"inactive","tooltip":"Idle inhibit disabled"}'
         fi
         ;;
