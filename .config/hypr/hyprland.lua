@@ -12,7 +12,7 @@ require('permissions')
 require('devices')
 
 
-require('animations.fast')
+require('animations.fancy')
 
 
 require('config')
