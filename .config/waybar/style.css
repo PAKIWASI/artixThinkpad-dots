@@ -1,198 +1,134 @@
 @import "colors.css";
 
+/* ── Reset ──────────────────────────────────────────────── */
+
 * {
-    border: none;
-    border-radius: 0;
+    /* border: none; */
+    border-radius: 10px;
     font-family: JetBrainsMono Nerd Font;
     font-weight: normal;
     font-size: 11px;
     min-height: 0;
+    transition: color 0.2s ease;
 }
 
+/* ── Bar ────────────────────────────────────────────────── */
+
 window#waybar {
-    background: transparent;
-    color: @foreground;
+    background: @purple;
+    color: @comment;
+}
+
+window#waybar > box {
+    background: @background;
+    margin: 1px;
+}
+
+/* ── Workspaces ─────────────────────────────────────────── */
+
+#workspaces {
+    padding: 0 4px;
+    margin: 0 4px;
 }
 
 #workspaces button {
-    padding: 5px;
+    padding: 0 8px;
+    min-width: 0;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button label {
     color: @comment;
-    margin-right: 5px;
 }
 
-#workspaces button.active {
-    color: @green;
-}
-
-#workspaces button.focused {
+#workspaces button:hover label {
     color: @foreground;
-    background: @purple;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: @background;
-    background: @red;
-    border-radius: 10px;
 }
 
 #workspaces button:hover {
-    background: @selection;
+    background: transparent;
+    border-bottom: 2px solid @comment;
+}
+
+#workspaces button.active label {
+    color: @pink;
+}
+
+#workspaces button.urgent {
+    border-bottom: 2px solid @red;
+}
+
+#workspaces button.urgent label {
+    color: @red;
+}
+
+/* ── Left ───────────────────────────────────────────────── */
+
+#window {
+    padding: 0 12px;
+}
+
+#window label {
     color: @foreground;
-    border-radius: 10px;
-}
-
-#window,
-#clock,
-#custom-idle-inhibit,
-#battery,
-#pulseaudio,
-#pulseaudio.microphone,
-#network,
-#bluetooth,
-#cpu,
-#memory,
-#workspaces,
-#tray,
-#backlight {
-    background: @background;
-    padding: 0px 10px;
-    margin: 3px 0px;
-    margin-top: 5px;
-}
-
-#backlight {
-    border-radius: 10px 0px 0px 10px;
 }
 
 #tray {
-    border-radius: 10px;
-    margin-right: 10px;
+    padding: 0 10px;
 }
 
-#workspaces {
-    background: @background;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding-right: 0px;
-    padding-left: 5px;
+#tray > .passive {
+    -gtk-icon-effect: dim;
 }
 
-#cpu {
-    border-radius: 0px 10px 10px 0px;
-    margin-right: 10px;
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
 }
 
-#memory {
-    border-radius: 10px 0px 0px 10px;
-}
-
-#window {
-    border-radius: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-}
+/* ── Center ─────────────────────────────────────────────── */
 
 #clock {
-    color: @purple;
-    border-radius: 10px;
-    margin-left: 5px;
-}
-
-#network {
-    color: @cyan;
-    border-radius: 10px 0px 0px 10px;
-}
-
-#network.disconnected {
-    color: @comment;
-}
-
-#network.alt {
-    color: @comment;
-}
-
-#bluetooth {
-    color: @cyan;
-    border-radius: 0px 10px 10px 0px;
-    margin-right: 10px;
-}
-
-#bluetooth.disabled {
-    color: @comment;
-}
-
-#bluetooth.connected {
-    color: @purple;
-}
-
-#pulseaudio {
-    color: @green;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#pulseaudio.muted {
-    color: @comment;
-}
-
-#pulseaudio.microphone {
     color: @pink;
-    border-radius: 0px 10px 10px 0px;
-    border-left: 0px;
-    border-right: 0px;
-    margin-right: 5px;
+    padding: 0 16px;
+    letter-spacing: 1px;
 }
 
-#pulseaudio.microphone.muted {
+/* ── Right — base ───────────────────────────────────────── */
+
+#memory,
+#cpu,
+#network,
+#bluetooth,
+#custom-idle-inhibit,
+#battery,
+#backlight,
+#pulseaudio,
+#pulseaudio.microphone {
     color: @comment;
+    padding: 0 10px;
 }
 
+/* ── Right — group separators ───────────────────────────── */
 
-#custom-idle-inhibit {
-    padding-right: 5px;
-    color: #6272a4;
-    border-radius: 10px 0px 0px 10px;
-}
+#memory                { padding-left: 14px; }
+#pulseaudio.microphone { padding-right: 12px; }
 
-#custom-idle-inhibit.active {
-    color: #ff79c6;
-}
+/* ── Right — contextual ─────────────────────────────────── */
 
-#battery {
-    color: @green;
-    border-radius: 0px 10px 10px 0px;
-    margin-right: 10px;
-}
+#battery.charging      { color: @green;  }
+#battery.warning       { color: @orange; }
+#battery.critical      { color: @red;    }
 
-#battery.warning {
-    color: @orange;
-}
+#memory.warning        { color: @orange; }
+#memory.critical       { color: @red;    }
 
-#battery.critical {
-    color: @red;
-}
+#network.disconnected  { color: @selection; }
 
-#battery.charging {
-    color: @yellow;
-}
+#bluetooth.connected   { color: @pink;      }
+#bluetooth.disabled    { color: @selection; }
 
-#backlight {
-    color: @yellow;
-}
+#pulseaudio.muted            { color: @selection; }
+#pulseaudio.microphone.muted { color: @selection; }
 
-#cpu {
-    color: @orange;
-}
+#custom-idle-inhibit.active  { color: @pink; }
 
-#memory {
-    color: @purple;
-}
-
-#memory.high {
-    color: @orange;
-}
-
-#memory.critical {
-    color: @red;
-}

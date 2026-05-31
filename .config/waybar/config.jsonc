@@ -6,6 +6,8 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 0,
+    "margin-left": 8,
+    "margin-right": 8,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
@@ -25,7 +27,7 @@
     ],
 
     "hyprland/window": {
-        "format": " {}",
+        "format": "<span color='#ff79c6'>  </span>{}",
         "max-length": 30
     },
 
@@ -112,9 +114,9 @@
 
     "memory": {
         "states": {
-            "c": 90,
-            "h": 60,
-            "m": 30
+            "critical": 90,
+            "warning": 60,
+            "medium": 30
         },
         "interval": 10,
         "format": "󰾆 {used}GB",
@@ -166,4 +168,6 @@
         "on-click": "~/.config/waybar/scripts/idle_inhibit.sh toggle",
         "signal": 8
     }
+
+
 }

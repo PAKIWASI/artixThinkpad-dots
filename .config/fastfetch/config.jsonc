@@ -14,7 +14,7 @@
       },
       "width": 13
     },
-    "percent": {  
+    "percent": {
       "type": 15
     }
   },
@@ -31,7 +31,7 @@
     {// 
       "type": "os",
       "key": "{#cyan}│ {#red}󰣇 OS      ",
-      "format": "{2}                  {#cyan}│",
+      "format": "{2}                 {#cyan}│",
       "keyColor": "red"
     },
     {
@@ -95,13 +95,8 @@
       "type": "disk",
       "key": "{#green}│ {#red}󱦟 OS Age ",
       "folders": "/",
-      "format": "{days} days                      {#green}│"
+      "format": "{days} days                       {#green}│"
     },
-    // {
-    //   "type": "uptime",
-    //   "key": "{#green}│ {#red}󱫐 Uptime ",
-    //   "format": "{10}                      {#green}│"
-    // },
     {
       "type": "custom",
       "format": "{#green}╰──────────────────────────────────────────╯"
