@@ -1,10 +1,10 @@
 @import "colors.css";
 
-/* ── Reset ──────────────────────────────────────────────── */
+/* Reset*/
 
 * {
     /* border: none; */
-    border-radius: 10px;
+    border-radius: 8px;
     font-family: JetBrainsMono Nerd Font;
     font-weight: normal;
     font-size: 11px;
@@ -12,7 +12,7 @@
     transition: color 0.2s ease;
 }
 
-/* ── Bar ────────────────────────────────────────────────── */
+/* Bar */
 
 window#waybar {
     background: @purple;
@@ -24,7 +24,7 @@ window#waybar > box {
     margin: 1px;
 }
 
-/* ── Workspaces ─────────────────────────────────────────── */
+/* Workspaces */
 
 #workspaces {
     padding: 0 4px;
@@ -63,14 +63,14 @@ window#waybar > box {
     color: @red;
 }
 
-/* ── Left ───────────────────────────────────────────────── */
+/* Left */
 
 #window {
     padding: 0 12px;
 }
 
 #window label {
-    color: @foreground;
+    color: @comment;
 }
 
 #tray {
@@ -85,7 +85,7 @@ window#waybar > box {
     -gtk-icon-effect: highlight;
 }
 
-/* ── Center ─────────────────────────────────────────────── */
+/* Center */
 
 #clock {
     color: @pink;
@@ -93,7 +93,7 @@ window#waybar > box {
     letter-spacing: 1px;
 }
 
-/* ── Right — base ───────────────────────────────────────── */
+/* Right — base */
 
 #memory,
 #cpu,
@@ -108,12 +108,12 @@ window#waybar > box {
     padding: 0 10px;
 }
 
-/* ── Right — group separators ───────────────────────────── */
+/* Right — group separators */
 
 #memory                { padding-left: 14px; }
 #pulseaudio.microphone { padding-right: 12px; }
 
-/* ── Right — contextual ─────────────────────────────────── */
+/* Right — contextual */
 
 #battery.charging      { color: @green;  }
 #battery.warning       { color: @orange; }
@@ -128,6 +128,7 @@ window#waybar > box {
 #bluetooth.disabled    { color: @selection; }
 
 #pulseaudio.muted            { color: @selection; }
+/* not working? added a span in the jsonc */
 #pulseaudio.microphone.muted { color: @selection; }
 
 #custom-idle-inhibit.active  { color: @pink; }
