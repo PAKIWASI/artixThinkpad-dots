@@ -142,8 +142,7 @@
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "󰖪  Disconnected",
         "tooltip-format-disconnected": "Disconnected",
-        // "format-alt": "<span foreground='#8be9fd'> {bandwidthDownBytes}</span> <span foreground='#ffb86c'> {bandwidthUpBytes}</span>",
-        "format-alt": "󰖪  Off",
+        "format-alt": "<span foreground='#6272a4'>󰖪  Off</span>",
         "interval": 2,
         "on-click": "wifi toggle"
     },
