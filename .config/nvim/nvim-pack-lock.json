@@ -26,16 +26,16 @@
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "lavender.nvim": {
-      "rev": "50d8c9c19509ba5b03760e2d644128afc4215281",
+      "rev": "2cfcec0433e357a6df5f3b1bfab81aaa80c2faee",
       "src": "https://codeberg.org/jthvai/lavender.nvim",
       "version": "'stable'"
     },
     "lualine.nvim": {
-      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "7b01e2974a47d489bb92f47a41e4c0088ea8f86e",
+      "rev": "0a695750d747db1e7e70bcf0267ef8951c95fc83",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/echasnovski/mini.pairs"
     },
     "mini.surround": {
-      "rev": "1e37ade260e2b655c3a9b8407ba7e6b0fb995b28",
+      "rev": "d12d8e6ea8e4d9d3e6fb0e3ff11c84fcce2299ac",
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "nvim-dap": {

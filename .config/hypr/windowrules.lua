@@ -2,9 +2,9 @@
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
-local default_size = { "(monitor_w*.50)", "(monitor_h*.75)" }
-local default_move_pip = { "(monitor_w*.74)", "(monitor_h*.735)" }
-local default_size_pip = { "(monitor_w*.25)", "(monitor_h*.25)" }
+local default_size      = { "(monitor_w*.50)", "(monitor_h*.75)" }
+local default_move_pip  = { "(monitor_w*.74)", "(monitor_h*.735)" }
+local default_size_pip  = { "(monitor_w*.25)", "(monitor_h*.25)" }
 
 
 -- all picture in picture mini windows
@@ -40,6 +40,18 @@ hl.window_rule({
 hl.window_rule({
     name    = "xdg desktop portal windows",
     match   = { class = "xdg-desktop-portal-gtk" },
+    float   = true,
+    center  = true,
+    size    = default_size
+})
+
+-- thunar popups
+hl.window_rule({
+    name    = "thunar popups",
+    match   = {
+        title = "^(.*([Rr]ename|[Pr]references).*)$",
+        class = "^([Tt]hunar)$"
+    },
     float   = true,
     center  = true,
     size    = default_size
