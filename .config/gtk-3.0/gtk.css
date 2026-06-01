@@ -1,0 +1,56 @@
+@import "../waybar/colors.css";
+
+/* Universal background and text */
+* {
+    background-color: @background;
+    color: @pink;
+}
+
+/* Selected items anywhere */
+*:selected {
+    background-color: @selection;
+    color: @purple;
+}
+
+*:hover {
+    background-color: @selection;
+}
+
+/* Buttons */
+button {
+    background-color: @background;
+    color: @foreground;
+}
+
+button:hover {
+    background-color: @selection;
+}
+
+/* Text entries */
+entry {
+    background-color: @background;
+    color: @foreground;
+}
+
+entry:selected {
+    background-color: @selection;
+    color: @purple;
+}
+
+/* Headerbar / titlebar */
+headerbar {
+    background-color: @background;
+    color: @foreground;
+    border-bottom: 1px solid @selection;
+}
+
+/* Sidepanel */
+.sidebar {
+    background-color: @background;
+    color: @foreground;
+}
+
+.sidebar row:selected {
+    background-color: @selection;
+    color: @purple;
+}
