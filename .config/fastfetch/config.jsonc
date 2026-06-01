@@ -1,9 +1,8 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "source": "\"$($HOME/.local/bin/fastfetch)\"",
     "type": "kitty-icat",
-    "height": 18
+    "height": 10
   },
   "display": {
     "separator": " │ ",
@@ -49,7 +48,7 @@
     {
       "type": "shell",
       "key": "{#cyan}│ {#magenta}  Shell  ",
-      "format": "{#italic_bright_light_black}{1}                         {#cyan}│",
+      "format": "{#italic_bright_light_black}{3}                         {#cyan}│",
       "keyColor": "magenta"
     },
     {

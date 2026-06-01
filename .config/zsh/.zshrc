@@ -67,14 +67,13 @@ setopt NUMERIC_GLOB_SORT
 setopt NO_CASE_GLOB
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 zstyle ':completion:*' matcher-list \
   'm:{a-zA-Z}={A-Za-z}' \
-  'r:|[._-]=* r:|=*' \
-  'l:|=* r:|=*'
+  'r:|[._-]=* r:|=*'
 
 # DIRECTORY STACK
 # ==================================================
@@ -197,8 +196,8 @@ alias mkdir='mkdir -p'
 # applications
 alias pic='kitty icat'
 alias camera='guvcview'
-alias f='fastfetch --logo-type kitty-icat --logo-width 35'
-alias ff='fastfetch -l small'
+alias f='fetch'
+alias ff='fastfetch'
 alias n='nvim'
 alias nd='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim'
 alias ndc='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim --clean'
@@ -291,4 +290,7 @@ fcdt() {
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+source $XDG_CONFIG_HOME/zsh/display_logo.zsh
+
 

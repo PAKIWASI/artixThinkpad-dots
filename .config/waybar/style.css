@@ -140,3 +140,4 @@ window#waybar > box {
 #pulseaudio.microphone.muted { color: @selection; }
 
 #custom-idle-inhibit.active  { color: @pink; }
+

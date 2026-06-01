@@ -1,17 +1,14 @@
 #!/usr/bin/zsh
+#
+LOGO_DIR="${1:-$HOME/Pictures/Pfps}"
 
+RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( \
+    -iname "*.jpg"  -o -iname "*.jpeg" -o \
+    -iname "*.png"  -o -iname "*.webp" -o \
+    -iname "*.gif"  \
+\) | shuf -n 1)
 
-local LOGO_DIR="$HOME/Pictures/Pfps"
+[[ -z "$RANDOM_LOGO" ]] && return
 
-
-if [ -d "$LOGO_DIR" ] && command -v kitty >/dev/null 2>&1; then
-    local RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | shuf -n 1)
-    if [ -n "$RANDOM_LOGO" ]; then
-        local SIZE=18
-        local cols=$(tput cols)
-        local left=$(( (cols - SIZE) / 2 ))
-        kitty icat --align center --place "${SIZE}x${SIZE}@${left}x0" "$RANDOM_LOGO"
-        printf '\n%.0s' $(seq 1 $((SIZE / 2)))
-    fi
-fi
-
+kitty icat --clear --align center "$RANDOM_LOGO"
+# kitty icat --clear --align center --scale-up --place 20x20@0x0 "$RANDOM_LOGO"
