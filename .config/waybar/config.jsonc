@@ -6,6 +6,7 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 0,
+    "margin-top": 4,
     "margin-left": 8,
     "margin-right": 8,
     "modules-left": [
@@ -93,13 +94,13 @@
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": " ",
-            "hands-free": "",
-            "headset": " ",
-            "phone": " ",
-            "portable": "",
-            "car": " ",
-            "default": ["󰕿", "󰖀", "󰕾", ""]
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": "󰲑",
+            "car": " ",
+            "default": ["󰕿", "󰖀", "󰕾", " "]
         }
     },
 

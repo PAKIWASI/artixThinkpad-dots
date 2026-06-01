@@ -1,10 +1,9 @@
 @import "colors.css";
 
-/* Reset*/
+/* Reset */
 
 * {
-    /* border: none; */
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: JetBrainsMono Nerd Font;
     font-weight: normal;
     font-size: 11px;
@@ -21,7 +20,7 @@ window#waybar {
 
 window#waybar > box {
     background: @background;
-    margin: 1px;
+    margin: 2px;
 }
 
 /* Workspaces */
