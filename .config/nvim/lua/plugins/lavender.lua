@@ -67,8 +67,6 @@ vim.g.lavender = {
             --     ctermbg = 236,
             -- },
 
-
-
             -- FIX for highlight too light
             -- Make cursor line clearly visible
 
@@ -82,6 +80,11 @@ vim.g.lavender = {
                 fg = "purple1",
                 bold = true,
             },
+
+            Visual    = { bg = "#44475a" },
+            VisualNOS = { bg = "#44475a" },
+
+
         },
 
         --------------------------------------------------------------
