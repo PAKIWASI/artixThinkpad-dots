@@ -2,8 +2,9 @@
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
-local default_move = { "(monitor_w*.73)", "(monitor_h*.72)" }
 local default_size = { "(monitor_w*.50)", "(monitor_h*.75)" }
+local default_move_pip = { "(monitor_w*.74)", "(monitor_h*.735)" }
+local default_size_pip = { "(monitor_w*.25)", "(monitor_h*.25)" }
 
 
 -- all picture in picture mini windows
@@ -12,8 +13,8 @@ hl.window_rule({
     match   = { title = "^((?i)picture[-\\s]?in[-\\s]?picture.*)$"},
     float   = true,
     pin     = true,
-    move    = default_move,
-    size    = default_size
+    move    = default_move_pip,
+    size    = default_size_pip
 })
 
 
@@ -22,22 +23,9 @@ hl.window_rule({
     match = { class = "chromium-browser" },
     float = true,
     pin   = true,
-    move  = default_move,
-    size  = default_size
+    move  = default_move_pip,
+    size  = default_size_pip
 })
-
--- BUG: doesnot work
--- browser signins
-hl.window_rule({
-    name  = "browser auth popup",
-    match = {
-        title = "^(.*(?i)sign[ -]?in.*)$",
-    },
-    float   = true,
-    center  = true,
-    size    = default_size
-})
-
 
 hl.window_rule({
     name    = "pavucontrol",
