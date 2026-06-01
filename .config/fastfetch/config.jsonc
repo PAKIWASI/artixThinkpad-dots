@@ -9,8 +9,10 @@
     "separator": " │ ",
     "bar": {
       "char": {
-        "elapsed": "=", // █░
-        "total": "-"
+        // "elapsed": "=",
+        // "total": "-"
+        //"elapsed": "⣿", "total": "⣀"
+        "elapsed": "─", "total": "─"
       },
       "width": 13
     },
@@ -31,23 +33,23 @@
     {// 
       "type": "os",
       "key": "{#cyan}│ {#magenta}󰣇 OS      ",
-      "format": "{2}                 {#cyan}│",
+      "format": "{#italic_bright_light_black}{2}                 {#cyan}│",
       "keyColor": "magenta"
     },
     {
         "type": "wm",
         "key": "{#cyan}│ {#magenta} WM      ",
-        "format": "{2}                    {#cyan}│"
+        "format": "{#italic_bright_light_black}{2}                    {#cyan}│"
     },
     {
       "type": "terminal",
       "key": "{#cyan}│ {#magenta} Terminal",
-      "format": "tmux                        {#cyan}│"
+      "format": "{#italic_bright_light_black}tmux                        {#cyan}│"
     },
     {
       "type": "shell",
       "key": "{#cyan}│ {#magenta}  Shell  ",
-      "format": "{1}                         {#cyan}│",
+      "format": "{#italic_bright_light_black}{1}                         {#cyan}│",
       "keyColor": "magenta"
     },
     {
@@ -67,12 +69,12 @@
     },
     { // "format": "{1} @ {7}",
       "type": "cpu",
-      "format": "Intel i5-1135G7 @ 4.20 GHz   {#green}│",
+      "format": "{#italic_bright_light_black}Intel i5-1135G7 @ 4.20 GHz   {#green}│",
       "key": "{#green}│ {#blue} CPU    "
     },
     {
       "type": "gpu",
-      "format": "{1} {2}       {#green}│",
+      "format": "{#italic_bright_light_black}{1} {2}       {#green}│",
       "key": "{#green}│ {#blue}󰊴 GPU    "
     },
     {
@@ -95,7 +97,7 @@
       "type": "disk",
       "key": "{#green}│ {#blue}󱦟 OS Age ",
       "folders": "/",
-      "format": "{days} days                       {#green}│"
+      "format": "{#italic_bright_light_black}{days} days                       {#green}│"
     },
     {
       "type": "custom",
