@@ -1,9 +1,8 @@
 #! /usr/bin/zsh
 
 
-local LOGO_DIR="$HOME/Pictures/pfps"
+local LOGO_DIR="$HOME/Pictures/Pfps"
 
-# TODO: img gets cut off from the bottom when prompt gets rendered
 
 if [ -d "$LOGO_DIR" ] && command -v kitty >/dev/null 2>&1; then
     local RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | shuf -n 1)
