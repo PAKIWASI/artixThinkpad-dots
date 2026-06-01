@@ -10,4 +10,5 @@ IMG=$(find "$DIR" -type f \( \
 \) | shuf -n 1)
 
 [[ -z "$IMG" ]] && exit 1
-swaybg -i "$IMG" -m fill
+pkill swaybg
+swaybg -i "$IMG" -m fill &

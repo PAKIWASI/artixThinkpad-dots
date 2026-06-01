@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+fallback=$(~/.config/hypr/scripts/random_img_path.sh ~/Pictures/Pfps)
 
 url=$(playerctl metadata mpris:artUrl 2>/dev/null)
-fallback="$HOME/Pictures/pfps/ok/11.png"
 
-[ -z "$url" ] && echo "$fallback" && exit
+if [[ -z "$url" ]]; then
+    echo "$fallback"
+    exit 0
+fi
 
 if [[ "$url" == file://* ]]; then
-    echo "${url#file://}"
+    path="${url#file://}"
+    [[ -f "$path" ]] && echo "$path" || echo "$fallback"
 elif [[ "$url" == http* ]]; then
     cache="/tmp/hyprlock-cover.jpg"
     curl -sf "$url" -o "$cache" && echo "$cache" || echo "$fallback"
