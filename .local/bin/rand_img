@@ -1,4 +1,4 @@
-#! /usr/bin/zsh
+#!/usr/bin/zsh
 
 
 local LOGO_DIR="$HOME/Pictures/Pfps"

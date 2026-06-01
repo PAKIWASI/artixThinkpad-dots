@@ -3,7 +3,7 @@
 -------------------
 
 hl.on("hyprland.start", function ()
-    hl.exec_cmd('swaybg -i ' .. require('utils.common').wallpaper_path .. ' -m fill')
+    hl.exec_cmd('swaybg -i ' .. require('utils.common').paths.wallpapers .. "dracula_1.jpg" .. ' -m fill')
     hl.exec_cmd('mako')
     hl.exec_cmd('waybar')
     hl.exec_cmd('wl-paste --type text --watch cliphist store')

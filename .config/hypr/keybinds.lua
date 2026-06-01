@@ -5,7 +5,7 @@
 local mainMod   = "SUPER"
 
 local apps      = require('utils.common').default_apps
-local scripts   = require('utils.common').scripts_path
+local scripts   = require('utils.common').paths.scripts
 
 
 

@@ -146,7 +146,7 @@
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "󰖪  Disconnected",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "󰖪  Off",
+        "format-alt": "<span color='#44475a'> 󰖪  Off</span>",
         "interval": 2,
         "on-click": "wifi toggle"
     },
