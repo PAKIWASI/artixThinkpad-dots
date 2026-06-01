@@ -2,12 +2,8 @@
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
-
-
--- idle inhibit some apps
-hl.window_rule({ match = { class =  "^(zen|zen-browser)$" }, idle_inhibit = "focus"})
-hl.window_rule({ match = { class =  "^([Ss]potify)$" }, idle_inhibit = "focus"})
-hl.window_rule({ match = { class =  "^(mpv)$" }, idle_inhibit = "focus"})
+local default_move = { "(monitor_w*.73)", "(monitor_h*.72)" }
+local default_size = { "(monitor_w*.50)", "(monitor_h*.75)" }
 
 
 -- all picture in picture mini windows
@@ -16,8 +12,8 @@ hl.window_rule({
     match   = { title = "^((?i)picture[-\\s]?in[-\\s]?picture.*)$"},
     float   = true,
     pin     = true,
-    move    = { "(monitor_w*.73)", "(monitor_h*.72)" },
-    size    = { "(monitor_w*.25)", "(monitor_h*.25)" }
+    move    = default_move,
+    size    = default_size
 })
 
 
@@ -26,8 +22,8 @@ hl.window_rule({
     match = { class = "chromium-browser" },
     float = true,
     pin   = true,
-    move  = { "(monitor_w*.73)", "(monitor_h*.72)" },
-    size  = { "(monitor_w*.25)", "(monitor_h*.25)" }
+    move  = default_move,
+    size  = default_size
 })
 
 -- BUG: doesnot work
@@ -35,11 +31,20 @@ hl.window_rule({
 hl.window_rule({
     name  = "browser auth popup",
     match = {
-        title = "(?i)^(sign[-\\s]?in|sign[-\\s]?up|log[-\\s]?in|log[-\\s]?out|register|authorize|oauth|forgot[-\\s]?password|reset[-\\s]?password)"
+        title = "^(.*(?i)sign[ -]?in.*)$",
     },
-    float = true,
+    float   = true,
     center  = true,
-    size    = { "(monitor_w*0.5)", "(monitor_h*0.7)" }
+    size    = default_size
+})
+
+
+hl.window_rule({
+    name    = "pavucontrol",
+    match   = { class = "^(.*pulseaudio.*)$" },
+    float   = true,
+    center  = true,
+    size    = default_size
 })
 
 
@@ -49,7 +54,7 @@ hl.window_rule({
     match   = { class = "xdg-desktop-portal-gtk" },
     float   = true,
     center  = true,
-    size    = { "(monitor_w*0.5)", "(monitor_h*0.7)" }
+    size    = default_size
 })
 
 
