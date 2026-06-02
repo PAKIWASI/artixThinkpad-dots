@@ -137,6 +137,7 @@ window#waybar > box {
 #bluetooth.disabled    { color: @selection; }
 
 #pulseaudio.muted            { color: @selection; }
+/* this doesnot work? i added a span */
 #pulseaudio.microphone.muted { color: @selection; }
 
 #custom-idle-inhibit.active  { color: @pink; }

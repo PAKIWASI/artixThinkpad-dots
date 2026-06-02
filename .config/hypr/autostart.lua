@@ -5,12 +5,12 @@
 local paths = require('utils.common').paths
 
 hl.on("hyprland.start", function ()
+    -- TODO: always starts with the same wallpaper ....
     hl.exec_cmd(paths.scripts .. 'random_wall.sh ' .. paths.wallpapers)
     hl.exec_cmd('mako')
     hl.exec_cmd('waybar')
     hl.exec_cmd('wl-paste --type text --watch cliphist store')
     hl.exec_cmd('wl-paste --type image --watch cliphist store')
     hl.exec_cmd('hypridle')
-    hl.exec_cmd('brightnessctl set 40%')
-    hl.exec_cmd('bluetooth off')
+    hl.exec_cmd('brightnessctl set 30%')
 end)

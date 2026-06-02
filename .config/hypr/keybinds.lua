@@ -18,11 +18,13 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(apps.menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+-- TODO: add keybind for prev and next wallpaper as well
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(paths.scripts .. 'random_wall.sh ' .. paths.wallpapers))
 
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("bash " .. paths.scripts .. 'screenshot.sh' .. " region"))
 hl.bind(mainMod .. " + CTRL + P",  hl.dsp.exec_cmd("bash " .. paths.scripts .. 'screenshot.sh' .. " window"))
 hl.bind(mainMod .. " + ALT + P",   hl.dsp.exec_cmd("bash " .. paths.scripts .. 'screenshot.sh' .. " output"))
+
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.exit()'"))
 
