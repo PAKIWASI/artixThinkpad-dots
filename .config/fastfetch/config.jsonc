@@ -8,9 +8,8 @@
     "separator": " │ ",
     "bar": {
       "char": {
-        // "elapsed": "=",
-        // "total": "-"
         //"elapsed": "⣿", "total": "⣀"
+        // "elapsed": "•", "total": "•"
         "elapsed": "─", "total": "─"
       },
       "width": 13
