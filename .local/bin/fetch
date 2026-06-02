@@ -9,7 +9,7 @@ RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( \
 \) | shuf -n 1)
 
 if [[ -n "$RANDOM_LOGO" ]]; then
-    fastfetch --logo "$RANDOM_LOGO" --logo-type kitty-icat --logo-height 10 --config ~/.config/fastfetch/config.jsonc
+    fastfetch --logo "$RANDOM_LOGO" --logo-type kitty-icat --config ~/.config/fastfetch/config.jsonc
 else
     fastfetch --config ~/.config/fastfetch/config.jsonc
 fi

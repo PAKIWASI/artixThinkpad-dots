@@ -77,7 +77,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' matcher-list \
   'm:{a-zA-Z}={A-Za-z}' \
-  'r:|[._-]=* r:|=*'
+ 'r:|[._-]=* r:|=*'
 
 
 # DIRECTORY STACK

@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-#
+
 LOGO_DIR="${1:-$HOME/Pictures/Pfps}"
 
 RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( \
@@ -11,4 +11,3 @@ RANDOM_LOGO=$(find "$LOGO_DIR" -type f \( \
 [[ -z "$RANDOM_LOGO" ]] && return
 
 kitty icat --clear --align center "$RANDOM_LOGO"
-# kitty icat --clear --align center --scale-up --place 20x20@0x0 "$RANDOM_LOGO"
