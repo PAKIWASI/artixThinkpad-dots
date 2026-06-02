@@ -4,7 +4,7 @@
 
 local paths = require('utils.common').paths
 
-hl.on("hyprland.start", function ()
+hl.on("hyprland.start", function()
     -- TODO: always starts with the same wallpaper ....
     hl.exec_cmd(paths.scripts .. 'random_wall.sh ' .. paths.wallpapers)
     hl.exec_cmd('mako')

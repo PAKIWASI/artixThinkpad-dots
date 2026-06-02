@@ -5,7 +5,8 @@ common.default_apps = {
     terminal    = "kitty",
     fileManager = "thunar",
     menu        = "fuzzel",
-    browser     = "zen-browser"
+    browser     = "zen-browser",
+    lock        = "hyprlock"
 }
 
 common.paths = {
