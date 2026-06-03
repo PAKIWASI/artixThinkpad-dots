@@ -2,7 +2,7 @@
 
 format = """\
   [╭╴](fg:#00e6e6)\
-  [󰣇 ](fg:#e680e6)\
+  [ ](fg:#e680e6)\
   $hostname\
   [ ](fg:#e680e6)\
   $username\

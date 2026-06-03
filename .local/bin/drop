@@ -10,7 +10,7 @@ set -o pipefail
 
 
 # persist drop target over multiple script calls
-TARGET="$HOME/.config/drop/target"
+TARGET="$HOME/.cache/drop/target"
 mkdir -p "$(dirname "$TARGET")"
 
 # default directory target, set when resetting dir (called by user)

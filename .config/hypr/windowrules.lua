@@ -7,7 +7,9 @@ local default_move_pip  = { "(monitor_w*.74)", "(monitor_h*.735)" }
 local default_size_pip  = { "(monitor_w*.25)", "(monitor_h*.25)" }
 
 
--- all picture in picture mini windows
+
+
+-- all picture in picture mini windows (spotify popupLyrics, youtube pip)
 hl.window_rule({
     name    = "pip windows",
     match   = { title = "^((?i)picture[-\\s]?in[-\\s]?picture.*)$"},
@@ -18,6 +20,34 @@ hl.window_rule({
 })
 
 
+-- spotify pip window not updating/syncing issue fix
+
+-- register rule to keep rendering spotify
+local spotifyPipRule = hl.window_rule({
+    name             = "spotify-pip-render",
+    match            = { class = "^([Ss]potify)$" },
+    render_unfocused = true,
+})
+
+-- disable the rule at startup so it's not always active
+spotifyPipRule:set_enabled(false)
+
+-- when we actually need it
+hl.on("window.open", function(w)
+    if w.title == "Picture in picture" then
+        spotifyPipRule:set_enabled(true)
+    end
+end)
+
+-- turn it off again
+hl.on("window.close", function(w)
+    if w.title == "Picture in picture" then
+        spotifyPipRule:set_enabled(false)
+    end
+end)
+
+
+
 hl.window_rule({
     name  = "pip windows chromium",
     match = { class = "chromium-browser" },
@@ -26,6 +56,8 @@ hl.window_rule({
     move  = default_move_pip,
     size  = default_size_pip
 })
+
+
 
 hl.window_rule({
     name    = "pavucontrol",
@@ -108,6 +140,10 @@ hl.layer_rule({
 -- uncomment all if you wish to use that.
 -- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
 -- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({
+    workspace = "10",
+    layout = "dwindle"
+})
 -- hl.window_rule({
 --     name  = "no-gaps-wtv1",
 --     match = { float = false, workspace = "w[tv1]" },

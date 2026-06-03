@@ -31,7 +31,7 @@ text-color=#e78284
 default-timeout=0
 
 # Typography
-font=JetBrainsMono Nerd Font 11
+font=JetBrains Mono 11
 markup=1
 format=<b>%s</b>\n%b
 
