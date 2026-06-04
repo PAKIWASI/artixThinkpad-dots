@@ -55,7 +55,6 @@ hl.config({
         sensitivity  = -0.3,
     },
 
-
     animations = {
         enabled = true,
     },
