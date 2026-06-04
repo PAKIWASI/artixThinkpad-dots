@@ -8,7 +8,7 @@ format = """\
   $username\
   $directory\
   $git_branch$git_commit$git_state $git_status\
-  \n[╰──](fg:#00e6e6)$character\n
+  \n[╰──](fg:#00e6e6)$character \n
 """
 
 right_format = """
