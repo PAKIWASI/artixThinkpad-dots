@@ -30,7 +30,8 @@ vim.g.lavender = {
     -- Diagnostic signs
     -- Uses patched fonts (Nerd Font icons)
     ------------------------------------------------------------------
-    signs = true,
+    --- TODO : what the fuck is this?
+    signs = false,
 
     ------------------------------------------------------------------
     -- Overrides
