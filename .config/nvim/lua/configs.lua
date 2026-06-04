@@ -52,4 +52,3 @@ opt.pumheight = 10
 opt.cmdheight = 0       -- hide cmd until needed
 
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
-

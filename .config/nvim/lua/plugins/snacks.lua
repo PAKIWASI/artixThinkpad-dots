@@ -31,7 +31,7 @@ require("snacks").setup({
                     end
                 },
                 { key = "P", desc = "Pack", icon = " ", action = function() vim.pack.update() end },
-                { key = "m", desc = "Mason", icon = " ", action = function() vim.cmd("Mason") end },
+                { key = "m", desc = "Mason", icon = " ", action = function() vim.cmd("Mason") end },
                 { key = "q", desc = "Quit", icon = " ", action = function() vim.cmd("qa") end },
             },
             header = [[

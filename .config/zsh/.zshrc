@@ -38,14 +38,11 @@ setopt NO_CLOBBER
 
 # ZSH-VI-MODE
 # ==================================================
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
 ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
 ZVM_VISUAL_LINE_MODE_CURSOR=$ZVM_CURSOR_BLOCK
 ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
-ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
@@ -159,15 +156,22 @@ fi
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-# BUG: cursor blink is gone
 # RESTORE KEYBINDINGS AFTER ZVM
 # ==================================================
 zvm_after_init() {
-  # Fix starship/zvm zle-keymap-select recursion
   function zle-keymap-select() {
     zvm_select_vi_mode
+    case $KEYMAP in
+      vicmd) print -n '\e[2 q' ;;  # steady block (normal mode)
+      *)     print -n '\e[6 q' ;;  # steady beam  (insert mode)
+    esac
   }
   zle -N zle-keymap-select
+
+  function zle-line-init() {
+    print -n '\e[6 q'  # steady beam at prompt
+  }
+  zle -N zle-line-init
 
   zle -N fzf-history
   bindkey '^R' fzf-history
@@ -202,7 +206,7 @@ alias mkdir='mkdir -p'
 alias pic='kitty icat'
 alias camera='guvcview'
 alias f='fetch'
-alias ff='fastfetch'
+alias ff='clear && fastfetch'
 alias n='nvim'
 alias nd='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim'
 alias ndc='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim --clean'
