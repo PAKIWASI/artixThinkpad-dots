@@ -74,9 +74,9 @@ hl.bind(mainMod .. " + tab", require('utils.change_workspace_layout'))
 
 -- zoom focused on cursor
 local zoom = require('utils.zoom')
-hl.bind(mainMod .. " + Equal", function() zoom(0.5) end)
-hl.bind(mainMod .. " + Minus", function() zoom(-0.5) end)
-hl.bind(mainMod .. " + SHIFT + Equal", function() hl.config({ cursor = { zoom_factor = 0 } }) end)
+hl.bind(mainMod .. " + Equal", function() zoom.set(0.5) end)
+hl.bind(mainMod .. " + Minus", function() zoom.set(-0.5) end)
+hl.bind(mainMod .. " + SHIFT + Equal", function() zoom.reset() end)
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
