@@ -69,6 +69,15 @@ hl.bind(mainMod .. " + CTRL + L", hl.dsp.window.swap({ direction = "right"}))
 hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.swap({ direction = "up"}))
 hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.swap({ direction = "down"}))
 
+-- Change the layout for the current workspace
+hl.bind(mainMod .. " + tab", require('utils.change_workspace_layout'))
+
+-- zoom focused on cursor
+local zoom = require('utils.zoom')
+hl.bind(mainMod .. " + Equal", function() zoom(0.5) end)
+hl.bind(mainMod .. " + Minus", function() zoom(-0.5) end)
+hl.bind(mainMod .. " + SHIFT + Equal", function() hl.config({ cursor = { zoom_factor = 0 } }) end)
+
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
