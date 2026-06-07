@@ -13,3 +13,5 @@ if [[ -n "$RANDOM_LOGO" ]]; then
 else
     fastfetch --config ~/.config/fastfetch/config.jsonc
 fi
+
+
