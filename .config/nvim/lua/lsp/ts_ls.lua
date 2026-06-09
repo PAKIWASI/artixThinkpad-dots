@@ -1,6 +1,6 @@
 
 ---@type vim.lsp.Config
-return {
+local config =  {
   settings = {
     typescript = {
       inlayHints = {
@@ -78,3 +78,25 @@ return {
     },
   },
 }
+
+
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    pattern = {'*.js', '*.ts', '*.jsx', '*.tsx'},
+    group = vim.api.nvim_create_augroup("TypescriptAttach", { clear = true }),
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if not client or client.name ~= "ts_ls" then return end
+
+        local function map(lhs, rhs, desc)
+            vim.keymap.set("n", lhs, rhs, { buffer = ev.buf, silent = true, desc = desc })
+        end
+
+        map("<leader>cA", function ()
+            vim.cmd('LspTypescriptSourceAction')
+        end, "Extended Code Action")
+
+    end
+})
+
+return config

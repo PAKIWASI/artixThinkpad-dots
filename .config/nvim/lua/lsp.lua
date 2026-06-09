@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
         end
 
-        -- Navigation   -- these overwritten by snacks
+        -- Navigation   -- these are overwritten by snacks
         map("gd", vim.lsp.buf.definition, "Go to Definition")
         map("gD", vim.lsp.buf.declaration, "Go to Declaration")
         map("gr", vim.lsp.buf.references, "Go to References")
@@ -63,10 +63,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             })
         end
 
-        -- disable formatting for servers you don't want formatting from.
-        -- if client and client.name == "lua_ls" then
-        --     client.server_capabilities.documentFormattingProvider = false
-        -- end
     end,
 })
 
@@ -80,7 +76,8 @@ local servers = {
 
 
 for _, name in ipairs(servers) do
-    -- reads your lsp/<name>.lua and merges capabilities into it
+    -- reads lsp/<server_name>.lua and merges capabilities into it
+    -- our user_config overrides the default options
     local ok, user_config = pcall(require, "lsp." .. name)
     local config = ok and user_config or {}
     config.capabilities = capabilities
@@ -95,7 +92,7 @@ vim.diagnostic.config({
     virtual_text = {
         prefix = function(diagnostic)
             local icons = {
-                [vim.diagnostic.severity.ERROR] = "✘",
+                [vim.diagnostic.severity.ERROR] = "✘ ",
                 [vim.diagnostic.severity.WARN]  = "●",
                 [vim.diagnostic.severity.HINT]  = "⚑",
                 [vim.diagnostic.severity.INFO]  = "»",

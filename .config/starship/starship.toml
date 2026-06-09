@@ -1,4 +1,4 @@
-# "$schema" = 'https://starship.rs/config-schema.json'
+# made this miself, formats taken from HYDE
 
 format = """\
   [╭╴](fg:#00e6e6)\
@@ -8,7 +8,7 @@ format = """\
   $username\
   $directory\
   $git_branch$git_commit$git_state $git_status\
-  \n[╰──](fg:#00e6e6)$character \n
+  \n[╰──](fg:#00e6e6)$character\n
 """
 
 right_format = """

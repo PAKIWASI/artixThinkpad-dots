@@ -19,18 +19,17 @@ local config = {    -- we do this because we want to register the autocmd after 
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
+    pattern = {'*.c', '*.h', '*.cpp', '*.hpp'},
     group = vim.api.nvim_create_augroup("ClangdAttach", { clear = true }),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if not client or client.name ~= "clangd" then return end
-
 
         local function map(lhs, rhs, desc)
             vim.keymap.set("n", lhs, rhs, { buffer = ev.buf, silent = true, desc = desc })
         end
 
         local float = require("utils.win").float;
-
 
         map("<leader>ch", function()
             require("utils.src_header_switcher").switcher(ev.buf)
