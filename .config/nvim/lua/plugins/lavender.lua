@@ -28,9 +28,8 @@ vim.g.lavender = {
 
     ------------------------------------------------------------------
     -- Diagnostic signs
-    -- Uses patched fonts (Nerd Font icons)
+    -- use icon (patched font) diagnostic sign text
     ------------------------------------------------------------------
-    --- TODO : what the fuck is this?
     signs = false,
 
     ------------------------------------------------------------------
@@ -67,6 +66,7 @@ vim.g.lavender = {
             --     ctermfg = 196,
             --     ctermbg = 236,
             -- },
+
 
             -- FIX for highlight too light
             -- Make cursor line clearly visible

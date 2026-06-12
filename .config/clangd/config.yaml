@@ -2,9 +2,8 @@ CompileFlags:
   Add:
     - -Wall
     - -Wextra
-    - -Wno-unused-parameter
-    - -Wunreachable-code 
     - -Wshadow
+    - -Wno-unused-parameter
 
 # Diagnostic section specific for C/CPP
 
