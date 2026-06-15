@@ -12,9 +12,9 @@ local config = {    -- we do this because we want to register the autocmd after 
         "--query-driver=/usr/bin/clang*",
     },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-    capabilities = {
-        offsetEncoding = { "utf-8", "utf-16" },
-    },
+    -- capabilities = {
+    --     offsetEncoding = { "utf-8", "utf-16" },
+    -- },
     single_file_support = true,
 }
 

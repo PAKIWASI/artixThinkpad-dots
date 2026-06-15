@@ -80,7 +80,11 @@ for _, name in ipairs(servers) do
     -- our user_config overrides the default options
     local ok, user_config = pcall(require, "lsp." .. name)
     local config = ok and user_config or {}
-    config.capabilities = capabilities
+    -- config.capabilities = capabilities
+    config.capabilities = vim.tbl_deep_extend("force",
+        config.capabilities or {},
+        capabilities
+    )
 
     vim.lsp.config(name, config)
     vim.lsp.enable(name)

@@ -96,11 +96,11 @@ EOF
 # Create sample cpp file
 cat > src/example.cpp << 'EOF'
 #include "example.hpp"
-#include <iostream>
+#include <print>
 
 void print_hello()
 {
-    std::cout << "Hello From C++20 CMake Ninja Project!\n";
+    std::println("Hello From C++23 CMake Ninja Project!");
 }
 
 EOF
