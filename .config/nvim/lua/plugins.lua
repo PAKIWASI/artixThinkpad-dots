@@ -9,24 +9,24 @@ require('plugins.lavender')
 
 
 -- mason
-vim.pack.add({ { src = "https://github.com/mason-org/mason.nvim" } })
+vim.pack.add({ "https://github.com/mason-org/mason.nvim" })
 require('plugins.mason')
 
 
 -- lspconfig
-vim.pack.add({ { src = 'https://github.com/neovim/nvim-lspconfig' } })
+vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 
 
 -- mason-lspconfig bridge
-vim.pack.add({ { src = "https://github.com/williamboman/mason-lspconfig.nvim" } })
+vim.pack.add({ "https://github.com/williamboman/mason-lspconfig.nvim" })
 require('plugins.mason-lspconfig')
 
 
 -- nvim-dap setup
-vim.pack.add({ { src = "https://github.com/mfussenegger/nvim-dap" } })
-vim.pack.add({ { src = "https://github.com/nvim-neotest/nvim-nio" } })
-vim.pack.add({ { src = "https://github.com/rcarriga/nvim-dap-ui" } })
-vim.pack.add({ { src = "https://github.com/theHamsta/nvim-dap-virtual-text" } })
+vim.pack.add({ "https://github.com/mfussenegger/nvim-dap" })
+vim.pack.add({ "https://github.com/nvim-neotest/nvim-nio" })
+vim.pack.add({ "https://github.com/rcarriga/nvim-dap-ui" })
+vim.pack.add({ "https://github.com/theHamsta/nvim-dap-virtual-text" })
 require("plugins.dap")
 
 
@@ -51,57 +51,62 @@ require("plugins.treesitter")
 
 
 -- git signs
-vim.pack.add({ { src = "https://github.com/lewis6991/gitsigns.nvim" } })
+vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
 require('gitsigns').setup({})
 
 
 -- oil.nvim - THE GOAT
-vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-web-devicons" } })
-vim.pack.add({ { src = "https://github.com/stevearc/oil.nvim" } })
-vim.pack.add({ { src = "https://github.com/FerretDetective/oil-git-signs.nvim" } })
+vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
+vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+vim.pack.add({ "https://github.com/FerretDetective/oil-git-signs.nvim" })
 require('plugins.oil')
 
 
 -- grug-far - regex based, project wide search and replace
-vim.pack.add({ { src = "https://github.com/MagicDuck/grug-far.nvim" } })
+vim.pack.add({ "https://github.com/MagicDuck/grug-far.nvim" })
 require("plugins.grug-far")
 
 
 -- ccc - color picker
-vim.pack.add({ { src = "https://github.com/uga-rosa/ccc.nvim" } })
+vim.pack.add({ "https://github.com/uga-rosa/ccc.nvim" })
 require("plugins.ccc")
 
 
 -- mini plugins - small, effective plugins
-vim.pack.add({ { src = "https://github.com/echasnovski/mini.pairs" } })
-vim.pack.add({ { src = "https://github.com/echasnovski/mini.move" } })
-vim.pack.add({ { src = "https://github.com/echasnovski/mini.surround"} })
+vim.pack.add({ "https://github.com/echasnovski/mini.pairs" })
+vim.pack.add({ "https://github.com/echasnovski/mini.move" })
+vim.pack.add({ "https://github.com/echasnovski/mini.surround" })
 require("plugins.mini")
 
 
 -- flash - move like flash
-vim.pack.add({ { src = "https://github.com/folke/flash.nvim" } })
+vim.pack.add({ "https://github.com/folke/flash.nvim" })
 require("plugins.flash")
 
 
 -- lualine
-vim.pack.add({ { src = "https://github.com/nvim-lualine/lualine.nvim" } })
+vim.pack.add({ "https://github.com/nvim-lualine/lualine.nvim" })
 require("plugins.lualine")
 
 
 -- bufferline
-vim.pack.add({ { src = "https://github.com/akinsho/bufferline.nvim" } })
+vim.pack.add({ "https://github.com/akinsho/bufferline.nvim" })
 require("plugins.bufferline")
 
 
 -- which-key
-vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 require("plugins.which-key")
 
 
 -- todo-coments
-vim.pack.add({ { src = "https://github.com/folke/todo-comments.nvim" } })
+vim.pack.add({ "https://github.com/folke/todo-comments.nvim" })
 require("plugins.todo-comments")
+
+
+-- markview.nivm
+vim.pack.add({ "https://github.com/OXY2DEV/markview.nvim" })
+require("plugins.markview")
 
 
 -- TODO:
@@ -124,7 +129,3 @@ vim.pack.add({ { src = "https://github.com/folke/snacks.nvim" } })
 require("plugins.snacks") -- last because dashboard measures startup time
 
 
--- dev plugin
--- require("marker").setup({
-    -- greeting = "it's markin' time",
--- })
