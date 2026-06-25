@@ -1,6 +1,16 @@
+
+vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#991ac6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#1ae6e6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardKey",    { fg = "#9980e6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardDesc",   { fg = "#ff66c6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardIcon",   { fg = "#ff4de6" })
+
+
 require("snacks").setup({
-    picker       = { enabled = true },
     image        = { enabled = false },
+    explorer     = { enabled = false },
+
+    picker       = { enabled = true },
     notifier     = { enabled = true },
     words        = { enabled = true },
     bigfile      = { enabled = true },
@@ -50,6 +60,15 @@ require("snacks").setup({
         sections = {
             { section = "header" },
             { section = "keys",  gap = 1, padding = 1 },
+            -- TODO: images dont work inside nvim?
+            -- everything cut short half length?
+            -- {
+            --     section = "terminal",
+            --     cmd = "rand_img",
+            --     pane = 2,
+            --     height = 100,
+            --     -- padding = 1,
+            -- },
             {
                 text = {
                     { require("utils.startup").format(), hl = "SnacksDashboardFooter" },
@@ -153,6 +172,13 @@ map("n", "<leader>bt", function()
     })
 end, { desc = "Terminal (bottom) cwd" })
 
+map("n", "<leader>bT", function()
+    Snacks.terminal(nil, {
+        cwd = require("utils.root").get(),
+        win = { position = "bottom", height = 0.5 },
+    })
+end, { desc = "Terminal (bottom) cwd" })
+
 map("n", "<leader>ft", function()
     Snacks.terminal(nil, {
         cwd = vim.fn.expand("%:p:h"),
@@ -166,4 +192,5 @@ map("n", "<leader>fT", function()
         win = require("utils.win").float,
     })
 end, { desc = "Floating Terminal (cwd)" })
+
 

@@ -1,4 +1,7 @@
 
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+
 
 require("bufferline").setup({
     options = {
@@ -20,3 +23,6 @@ map("n", "<leader>br", "<cmd>BufferLineCloseRight<CR>", { desc = "Close Buffers 
 map("n", "<leader>bl", "<cmd>BufferLineCloseLeft<CR>",  { desc = "Close Buffers Left" })
 map("n", "[b", "<cmd>BufferLineMovePrev<cr>", { desc = "Move Buffer Prev" })
 map("n", "]b", "<cmd>BufferLineMoveNext<cr>", { desc = "Move Buffer Next" })
+
+
+end})

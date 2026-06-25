@@ -1,4 +1,8 @@
 
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+
+
 require("lualine").setup({
     options = {
         disabled_filetypes   = {
@@ -85,3 +89,4 @@ require("lualine").setup({
 })
 
 
+end})
