@@ -70,15 +70,13 @@ require("lualine").setup({
         },
         lualine_y = {
             { "progress" },
-            { "location", left_padding = 1 },
-        },
+       },
         lualine_z = {
             {
-                'datetime',
-                style = '%I:%M %p',
+                "location",
                 separator = { right = '' },
                 left_padding = 1
-            },
+            }
         },
     },
     inactive_sections = {
