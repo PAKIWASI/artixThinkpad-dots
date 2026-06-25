@@ -124,6 +124,11 @@ for _, plugin in ipairs(disabled_built_ins) do
 end
 
 
+-- dev plugin
+vim.opt.runtimepath:append("~/Documents/projects/lua/noted.nvim")
+require("noted").setup({})
+
+
 -- Snacks slop - too much shit but I depend on it
 vim.pack.add({ { src = "https://github.com/folke/snacks.nvim" } })
 require("plugins.snacks") -- last because dashboard measures startup time

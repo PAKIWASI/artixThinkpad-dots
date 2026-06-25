@@ -14,5 +14,5 @@ require('plugins') -- time measured till end of this (dashboard)
 require('lsp')
 
 
-vim.notify(require("utils.startup").format())  -- actual final time as a notification
+vim.notify(require("utils.startup").format2())  -- actual final time as a notification
 

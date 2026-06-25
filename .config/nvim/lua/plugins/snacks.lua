@@ -1,9 +1,8 @@
-
 vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#991ac6" })
 vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#1ae6e6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardKey",    { fg = "#9980e6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardDesc",   { fg = "#ff66c6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardIcon",   { fg = "#ff4de6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#9980e6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#ff66c6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#ff4de6" })
 
 
 require("snacks").setup({
@@ -164,7 +163,10 @@ map("n", "<leader>bR", function() Snacks.rename.rename_file() end, { desc = "Ren
 map({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
 map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
 
+
+
 -- terminals
+
 map("n", "<leader>bt", function()
     Snacks.terminal(nil, {
         cwd = vim.fn.expand("%:p:h"),
@@ -179,6 +181,16 @@ map("n", "<leader>bT", function()
     })
 end, { desc = "Terminal (bottom) cwd" })
 
+
+map("n", "<leader>t", function()
+    Snacks.terminal("eza --tree --icons", {
+        cwd = require('utils.root').get(),
+        win = { position = "left", width = 32 },
+        auto_close = false,
+    })
+end, { desc = "File Tree view" })
+
+
 map("n", "<leader>ft", function()
     Snacks.terminal(nil, {
         cwd = vim.fn.expand("%:p:h"),
@@ -192,5 +204,3 @@ map("n", "<leader>fT", function()
         win = require("utils.win").float,
     })
 end, { desc = "Floating Terminal (cwd)" })
-
-

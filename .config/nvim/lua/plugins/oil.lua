@@ -1,5 +1,6 @@
 
 require("oil").setup({
+
     default_file_explorer = true,
     columns = { "git_status", "icon" },
     view_options = {
@@ -67,6 +68,6 @@ local function toggle_sidebar(dir)
 end
 
 map("n", "<leader>e", function() toggle_sidebar() end,              { desc = "Oil: Sidebar (cwd)" })
-map("n", "<leader>E", function() toggle_sidebar(vim.fn.getcwd()) end, { desc = "Oil: Sidebar (root)" })
+map("n", "<leader>E", function() toggle_sidebar(require('utils.root').get()) end, { desc = "Oil: Sidebar (root)" })
 
 
