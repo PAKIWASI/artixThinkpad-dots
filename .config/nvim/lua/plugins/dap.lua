@@ -11,7 +11,7 @@ vim.keymap.set({ "n", "x" }, "<leader>dd", function()
         -- debug session without its keymaps
         if package.loaded["dap"] and require("dap").session() ~= nil then
             vim.notify(
-                "Debug session still running -- terminate it first (<leader>dt)",
+                "Debug session still running -- terminate it first",
                 vim.log.levels.WARN
             )
             return
@@ -223,3 +223,4 @@ vim.keymap.set({ "n", "x" }, "<leader>dd", function()
         vim.notify("Debug mode: ON", vim.log.levels.INFO)
     end
 end, { desc = "Toggle Debug Mode (DAP)" })
+

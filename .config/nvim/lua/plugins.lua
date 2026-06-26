@@ -109,7 +109,6 @@ vim.pack.add({ "https://github.com/OXY2DEV/markview.nvim" })
 require("plugins.markview")
 
 
--- TODO:
 local disabled_built_ins = {
     "gzip",
     "zipPlugin",
@@ -118,7 +117,6 @@ local disabled_built_ins = {
     "netrwPlugin",
     "tutor_mode_plugin"
 }
-
 for _, plugin in ipairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end

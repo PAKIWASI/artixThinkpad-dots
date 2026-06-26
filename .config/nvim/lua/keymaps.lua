@@ -43,5 +43,3 @@ map('v', '>', '>gv', { desc = 'Indent right and reselect' })
 map("v", "<leader>p", '"_dP')
 
 
-
-

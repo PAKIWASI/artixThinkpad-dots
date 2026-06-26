@@ -1,4 +1,3 @@
-
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
@@ -12,6 +11,7 @@ autocmd('TextYankPost', {
     end,
     group = highlight_group,
 })
+
 
 
 -- Show cmdline when entering command mode
@@ -35,5 +35,20 @@ autocmd('BufEnter', {
     pattern = '*.h',
     command = "setfiletype c",
 })
+
+
+-- dev: reload a plugin (clear cache)
+vim.api.nvim_create_user_command("ReloadNoted", function(args)
+    local function reload_plugin(prefix)
+        for name in pairs(package.loaded) do
+            if name:match("^" .. prefix) then
+                package.loaded[name] = nil
+            end
+        end
+        require(prefix).setup({})
+        vim.notify("Reloaded " .. prefix)
+    end
+    reload_plugin("noted")
+end, { nargs = 0 })
 
 
