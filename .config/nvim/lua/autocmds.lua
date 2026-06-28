@@ -38,7 +38,7 @@ autocmd('BufEnter', {
 
 
 -- dev: reload a plugin (clear cache)
-vim.api.nvim_create_user_command("ReloadNoted", function(args)
+vim.api.nvim_create_user_command("ReloadNoted", function()
     local function reload_plugin(prefix)
         for name in pairs(package.loaded) do
             if name:match("^" .. prefix) then
