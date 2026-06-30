@@ -81,26 +81,11 @@ $time"""
 
 continuation_prompt = '▶▶ '
 
-
-# style_choices:
-# bold
-# italic
-# underline
-# dimmed
-# inverted
-# blink
-# hidden
-# strikethrough
-# bg:<color>
-# fg:<color>
-# <color>
-# none
-
 add_newline = false
 
 [character]
-success_symbol = "[󰁚](fg:#00e6e6)"
-error_symbol = "[](fg:red)"
+success_symbol = "[](fg:#00e6e6)" # 󰁚  
+error_symbol = "[](fg:red)"   # 
 
 [username]
 disabled = false

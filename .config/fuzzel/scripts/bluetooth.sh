@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # make sure bluetooth is on
 bluetoothctl power on &>/dev/null

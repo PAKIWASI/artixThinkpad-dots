@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # ensure wifi is on
 nmcli radio wifi on
