@@ -22,7 +22,7 @@ hl.window_rule({
 
 -- spotify pip window not updating/syncing issue fix
 
--- register rule to keep rendering spotify
+-- register rule to keep rendering spotify in the background
 local spotifyPipRule = hl.window_rule({
     name             = "spotify-pip-render",
     match            = { class = "^([Ss]potify)$" },

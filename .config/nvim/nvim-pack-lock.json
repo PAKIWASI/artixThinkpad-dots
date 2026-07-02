@@ -71,7 +71,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "rev": "dd1c9b802c943278179a5d819369cda085b79d45",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -84,7 +84,7 @@
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil-git-signs.nvim": {
