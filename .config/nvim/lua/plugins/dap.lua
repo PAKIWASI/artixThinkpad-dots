@@ -42,20 +42,16 @@ vim.keymap.set({ "n", "x" }, "<leader>dd", function()
 
 
             -- verify C/C++ adapter exists
-            local codelldb_path = vim.fn.stdpath("data") .. "/mason/bin/codelldb"
-            if vim.fn.executable(codelldb_path) ~= 1 then
-                vim.notify("codelldb is not installed", vim.log.levels.ERROR)
+            if vim.fn.executable("gdb") ~= 1 then
+                vim.notify("gdb is not installed", vim.log.levels.ERROR)
                 return
             end
 
-            -- C/C++ Adapter
-            dap.adapters.codelldb = {
-                type = "server",
-                port = "${port}",
-                executable = {
-                    command = codelldb_path,
-                    args = { "--port", "${port}" },
-                },
+            -- C/C++ Adapter (native DAP support, requires gdb 14+)
+            dap.adapters.gdb = {
+                type = "executable",
+                command = "gdb",
+                args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
             }
 
 
@@ -73,47 +69,39 @@ vim.keymap.set({ "n", "x" }, "<leader>dd", function()
             dap.configurations.c = {
                 {
                     name = "Launch",
-                    type = "codelldb",
+                    type = "gdb",
                     request = "launch",
                     program = get_path,
                     cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
+                    stopAtBeginningOfMainSubprogram = false,
                     -- ASan environment variables
                     env = {
                         -- Allow debugger to work with ASan
                         ASAN_OPTIONS = "detect_leaks=1:halt_on_error=0:abort_on_error=0",
                         LSAN_OPTIONS = "suppressions=" .. vim.fn.getcwd() .. "/lsan.supp",
                     },
-                    -- Important for ASan debugging
-                    initCommands = {
-                        -- Handle ASan signals gracefully
-                        "settings set target.process.stop-on-exec false",
-                    },
                 },
                 {
                     name = "Launch (ASan - no halt)",
-                    type = "codelldb",
+                    type = "gdb",
                     request = "launch",
                     program = get_path,
                     cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
+                    stopAtBeginningOfMainSubprogram = false,
                     env = {
                         -- Continue execution after ASan error
                         ASAN_OPTIONS = "detect_leaks=1:halt_on_error=0:abort_on_error=0:log_path=" ..
                             vim.fn.getcwd() .. "/asan.log",
                         LSAN_OPTIONS = "suppressions=" .. vim.fn.getcwd() .. "/lsan.supp",
                     },
-                    initCommands = {
-                        "settings set target.process.stop-on-exec false",
-                    },
                 },
                 {
                     name = "Launch (ASan - halt on error)",
-                    type = "codelldb",
+                    type = "gdb",
                     request = "launch",
                     program = get_path,
                     cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
+                    stopAtBeginningOfMainSubprogram = false,
                     env = {
                         -- Stop on ASan error for debugging
                         ASAN_OPTIONS = "detect_leaks=1:halt_on_error=1:abort_on_error=1",
@@ -223,4 +211,3 @@ vim.keymap.set({ "n", "x" }, "<leader>dd", function()
         vim.notify("Debug mode: ON", vim.log.levels.INFO)
     end
 end, { desc = "Toggle Debug Mode (DAP)" })
-
