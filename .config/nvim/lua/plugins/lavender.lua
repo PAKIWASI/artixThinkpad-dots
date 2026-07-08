@@ -108,3 +108,11 @@ vim.g.lavender = {
 
 vim.cmd("colorscheme lavender")
 
+-- snacks dashboard theme override
+vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#991ac6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#1ae6e6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#9980e6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#ff66c6" })
+vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#ff4de6" })
+
+

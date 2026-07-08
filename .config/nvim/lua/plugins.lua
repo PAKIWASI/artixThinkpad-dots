@@ -22,14 +22,6 @@ vim.pack.add({ "https://github.com/williamboman/mason-lspconfig.nvim" })
 require('plugins.mason-lspconfig')
 
 
--- nvim-dap setup
-vim.pack.add({ "https://github.com/mfussenegger/nvim-dap" })
-vim.pack.add({ "https://github.com/nvim-neotest/nvim-nio" })
-vim.pack.add({ "https://github.com/rcarriga/nvim-dap-ui" })
-vim.pack.add({ "https://github.com/theHamsta/nvim-dap-virtual-text" })
-require("plugins.dap")
-
-
 -- blink.cmp
 vim.pack.add({
     {

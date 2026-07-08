@@ -1,4 +1,4 @@
--- require("flash").setup({})
+require("flash").setup({})
 
 local map = vim.keymap.set
 

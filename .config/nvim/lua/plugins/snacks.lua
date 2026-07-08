@@ -1,8 +1,3 @@
-vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#991ac6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#1ae6e6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#9980e6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#ff66c6" })
-vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#ff4de6" })
 
 
 require("snacks").setup({
@@ -19,7 +14,7 @@ require("snacks").setup({
     scope        = { enabled = true },
     statuscolumn = { enabled = true },
     lazygit      = { enabled = true },
-    picker       = {
+    picker       = {    -- TODO: how does this work with flash?
         win = {
             input = {
                 keys = {
@@ -173,11 +168,11 @@ map("n", "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Co
 -- LSP (via snacks picker)
 map("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
 map("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
--- map("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
+map("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
 map("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 map("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto Type Definition" })
--- map("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Calls Incoming" })
--- map("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Calls Outgoing" })
+map("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Calls Incoming" })
+map("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Calls Outgoing" })
 map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
 
@@ -196,29 +191,37 @@ map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc 
 
 -- terminals
 
+local get_root = require('utils.root').get
+
+
 map("n", "<leader>bt", function()
     Snacks.terminal(nil, {
         cwd = vim.fn.expand("%:p:h"),
-        win = { position = "bottom", height = 0.5 },
+        win = { position = "bottom", height = 0.25 },
     })
 end, { desc = "Terminal (bottom) cwd" })
 
 map("n", "<leader>bT", function()
     Snacks.terminal(nil, {
-        cwd = require("utils.root").get(),
-        win = { position = "bottom", height = 0.5 },
+        cwd = get_root(),
+        win = { position = "bottom", height = 0.25 },
     })
-end, { desc = "Terminal (bottom) cwd" })
+end, { desc = "Terminal (bottom) root" })
 
-
-map("n", "<leader>t", function()
-    Snacks.terminal("eza --tree --icons", {
-        cwd = require('utils.root').get(),
-        win = { position = "left", width = 32 },
-        auto_close = false,
+map("n", "<leader>bv", function()
+    Snacks.terminal(nil, {
+        cwd = vim.fn.expand("%:p:h"),
+        win = { position = "right", width = 0.4 },
     })
-end, { desc = "File Tree view" })
+end, { desc = "Terminal (right) cwd" })
 
+
+map("n", "<leader>bV", function()
+    Snacks.terminal(nil, {
+        cwd = get_root(),
+        win = { position = "right", width = 0.4 },
+    })
+end, { desc = "Terminal (bottom) root" })
 
 map("n", "<leader>ft", function()
     Snacks.terminal(nil, {
@@ -229,7 +232,9 @@ end, { desc = "Floating Terminal (cwd)" })
 
 map("n", "<leader>fT", function()
     Snacks.terminal(nil, {
-        cwd = require("utils.root").get(),
+        cwd = get_root(),
         win = require("utils.win").float,
     })
-end, { desc = "Floating Terminal (cwd)" })
+end, { desc = "Floating Terminal (root)" })
+
+
