@@ -30,7 +30,7 @@
     },
     {// 
       "type": "os",
-      "key": "{#cyan}│ {#magenta}󰣇 OS      ",
+      "key": "{#cyan}│ {#magenta} OS      ",
       "format": "{#italic_bright_light_black}{2}                 {#cyan}│",
       "keyColor": "magenta"
     },
