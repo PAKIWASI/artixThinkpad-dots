@@ -53,6 +53,18 @@ export LS_COLORS="rs=0:di=38;2;255;121;198:ln=38;2;139;233;253:mh=38;2;255;184;1
 
 # COMPLETION SYSTEM (CORE)
 # ==================================================
+
+# Fix completion system
+if [[ -d /usr/share/zsh/functions ]]; then
+    fpath=(/usr/share/zsh/functions $fpath)
+fi
+
+# Ensure complist is available
+if [[ -d /usr/lib/zsh/$ZSH_VERSION ]]; then
+    fpath=(/usr/lib/zsh/$ZSH_VERSION $fpath)
+fi
+
+
 autoload -Uz compinit
 
 if [ -d /usr/share/zsh/plugins/zsh-completions ]; then
