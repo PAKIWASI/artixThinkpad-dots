@@ -1,3 +1,7 @@
+local nproc = tonumber(vim.fn.system({"nproc"})) or 1
+local njobs = math.max(1, nproc - 1)
+local clangd_jflag = "-j=" .. njobs
+local shell_jflag = " -j" .. njobs
 
 ---@type vim.lsp.Config
 local config = {    -- we do this because we want to register the autocmd after the config
@@ -5,6 +9,7 @@ local config = {    -- we do this because we want to register the autocmd after 
         "clangd",
         "--enable-config",
         "--background-index",
+        clangd_jflag,
         "--clang-tidy",
         "--header-insertion=iwyu",
         "--completion-style=detailed",
@@ -49,7 +54,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, "Create Source/Header Pair")
 
         map("<leader>cb", function()
-            Snacks.terminal("ninja -C build; exec $SHELL", { win = float})
+            Snacks.terminal("ninja -C build" .. shell_jflag .. "; exec $SHELL", { win = float })
         end, "Build Project (Ninja)")
 
         map("<leader>cx", function()
@@ -57,7 +62,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, "Run Project")
 
         map("<leader>cX", function()
-            Snacks.terminal("ninja -C build && ./build/main; exec $SHELL", { win = float})
+            Snacks.terminal("ninja -C build" .. shell_jflag .. " && ./build/main; exec $SHELL", { win = float})
         end, "Build and Run")
     end,
 })

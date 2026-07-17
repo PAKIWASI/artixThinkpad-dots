@@ -6,6 +6,9 @@ CompileFlags:
     - -Wno-unused-parameter
 
 # Diagnostic section specific for C/CPP
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
 
 Hover:
   ShowAKA: true
