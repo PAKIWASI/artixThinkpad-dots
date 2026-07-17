@@ -14,8 +14,9 @@ require("snacks").setup({
     scope        = { enabled = true },
     statuscolumn = { enabled = true },
     lazygit      = { enabled = true },
-    picker       = {    -- TODO: how does this work with flash?
-        win = {
+    picker       = {
+        ui_select = true,
+        win = {    -- TODO: how does this work with flash? what does this do?
             input = {
                 keys = {
                     ["<A-s>"] = { "flash", mode = { "n", "i" } },

@@ -43,3 +43,13 @@ map('v', '>', '>gv', { desc = 'Indent right and reselect' })
 map("v", "<leader>p", '"_dP')
 
 
+-- apply the obvious fix
+map("n", "<leader>cq", function()
+    vim.lsp.buf.code_action({
+        context = { only = { "quickfix" } },
+        apply = true,
+    })
+end, { desc = "Apply Quickfix" })
+
+
+
