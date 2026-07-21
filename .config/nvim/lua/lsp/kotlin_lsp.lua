@@ -22,7 +22,7 @@ return {
         kotlin = {
             compiler = {
                 jvm = {
-                    target = "26",
+                    target = "21",
                 },
             },
 
