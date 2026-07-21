@@ -71,7 +71,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "7f87dbb4707f54117e98ab8f15d6a2975b3f13f0",
+      "rev": "98b0b8a52742afc9e2e2078e2e451f91beef1717",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {

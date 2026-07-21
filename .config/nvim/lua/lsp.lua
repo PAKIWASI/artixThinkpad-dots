@@ -72,6 +72,7 @@ local servers = {
     "clangd",
     "ts_ls",
     "lua_ls",
+    "kotlin_lsp",
 }
 
 
