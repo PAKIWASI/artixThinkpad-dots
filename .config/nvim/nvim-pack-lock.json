@@ -22,13 +22,12 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "1cc080f55706b38aabfa97d40acb6adf59ac4a5a",
+      "rev": "0f6a5d0d7a70659b11bbcd6b3673ee0fe61b6024",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "lavender.nvim": {
-      "rev": "2cfcec0433e357a6df5f3b1bfab81aaa80c2faee",
-      "src": "https://codeberg.org/jthvai/lavender.nvim",
-      "version": "'stable'"
+      "rev": "bbb7c04952378d5430521206d42c48dcc413ac1e",
+      "src": "https://codeberg.org/jthvai/lavender.nvim"
     },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
@@ -71,7 +70,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "98b0b8a52742afc9e2e2078e2e451f91beef1717",
+      "rev": "b89138d9af0a96e6048e202a15765fc6b6416bd4",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {

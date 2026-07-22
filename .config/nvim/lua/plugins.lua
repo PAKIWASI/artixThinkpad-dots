@@ -1,10 +1,5 @@
 -- colorscheme: lavinder.nvim
-vim.pack.add({
-    {
-        src = "https://codeberg.org/jthvai/lavender.nvim",
-        version = "stable"
-    }
-})
+vim.pack.add({ "https://codeberg.org/jthvai/lavender.nvim" })
 require('plugins.lavender')
 
 
