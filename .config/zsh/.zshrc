@@ -109,35 +109,55 @@ if command -v zoxide >/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
+
 # FZF (CORE CONFIG)
 # ==================================================
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 export FZF_DEFAULT_OPTS="
-  --height=40%
+  --style=full:rounded
+  --height=~60%
+  --min-height=20+
   --layout=reverse
-  --border
-  --prompt='❯ '
-  --preview-window=right:60%
+  --cycle
   --highlight-line
   --info=inline-right
   --ansi
-  --border=none
-  --color=bg+:#44475a
-  --color=bg:#282a36
-  --color=border:#6272a4
-  --color=fg:#f8f8f2
-  --color=gutter:#282a36
-  --color=header:#ffb86c
-  --color=hl+:#8be9fd
-  --color=hl:#8be9fd
-  --color=info:#6272a4
-  --color=marker:#ff79c6
-  --color=pointer:#ff79c6
-  --color=prompt:#bd93f9
-  --color=query:#f8f8f2:regular
-  --color=scrollbar:#6272a4
-  --color=separator:#44475a
-  --color=spinner:#ff79c6
+  --scheme=path
+  --prompt='❯ '
+  --preview-window=right:60%,border-rounded
+  --color=fg:#f8f8f2,bg:#282a36
+  --color=fg+:#f8f8f2,bg+:#44475a,gutter:#282a36
+  --color=hl:#8be9fd,hl+:#8be9fd
+  --color=header:#ffb86c,header-border:#6272a4
+  --color=footer:#ffb86c,footer-border:#6272a4
+  --color=prompt:#bd93f9,pointer:#ff79c6,marker:#ff79c6,spinner:#ff79c6
+  --color=info:#6272a4,separator:#44475a,scrollbar:#6272a4
+  --color=border:#6272a4,list-border:#6272a4
+  --color=preview-border:#6272a4,preview-scrollbar:#6272a4
+  --color=input-border:#6272a4,label:#f8f8f2
+  --color=query:#f8f8f2:regular,ghost:#6272a4
+  --color=nth:italic,nomatch:#6272a4
+"
+
+# In tmux, always pop fzf up in a floating, rounded-border pane instead of
+# taking over the whole pane inline. No-op outside tmux, so it's safe here.
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --tmux=center,80%,70%"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"
+
+# Shell integration: CTRL-T (insert file path) and ALT-C (cd into
+# selected directory) for free.
+if command -v fzf >/dev/null; then
+  source <(fzf --zsh)
+fi
+
+# Preview file contents with bat (falls back to cat) and directories with
+# eza's tree view, so CTRL-T's preview matches the rest of your theme.
+export FZF_CTRL_T_OPTS="
+  --preview '(bat --style=numbers --color=always --line-range=:200 {} || cat {}) 2>/dev/null'
+"
+export FZF_ALT_C_OPTS="
+  --preview 'eza --tree --level=2 --icons --color=always {}'
 "
 
 # FZF CTRL-R HISTORY SEARCH
@@ -148,7 +168,10 @@ fzf-history() {
     fc -rl 1 |
     sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' |
     fzf --tac --no-sort --query="$LBUFFER" \
-        --prompt='history ❯ '
+        --scheme=history \
+        --prompt='history ❯ ' \
+        --header='enter: use command   ctrl-y: copy to clipboard' \
+        --bind='ctrl-y:execute-silent(echo -n {} | wl-copy)+abort'
   ) || return
   LBUFFER="$cmd"
 }
@@ -300,12 +323,41 @@ tree() {
 
 # FZF EXTRAS
 # ==================================================
-fcdt() {
+
+# cd into a subfolder, with tree preview
+fcd() {
   local dir
   dir=$(fd --type d --hidden --follow --exclude .git \
     | fzf --preview 'eza --tree --level=3 --icons --color=always {}') || return
   cd "$dir"
 }
+
+# open neovim with a file in the current directory (and its subdirectories),
+fzn() {
+  local file
+  file=$(fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2>/dev/null') || return
+  nvim "$file"
+}
+
+# live ripgrep search: type to reload results.
+# enter  -> exit fzf and jump straight into nvim at the exact line:col
+# ctrl-o -> peek in nvim without leaving fzf (quit nvim to return to results)
+frg() {
+  local rg_prefix="rg --column --line-number --no-heading --color=always --smart-case"
+  local nvim_at='nvim {1} "+call cursor({2},{3})"'
+  fzf --disabled --ansi \
+      --bind "start:reload:$rg_prefix {q}" \
+      --bind "change:reload:$rg_prefix {q} || true" \
+      --delimiter=: \
+      --preview 'bat --style=numbers --color=always --highlight-line {2} {1} 2>/dev/null' \
+      --preview-window='right:60%,border-rounded,+{2}+3/2,~3' \
+      --bind "enter:become[$nvim_at]" \
+      --bind "ctrl-o:execute[$nvim_at]" \
+      --header='enter: open at match   ctrl-o: peek without leaving'
+}
+
+
+
 
 # SYNTAX HIGHLIGHTING (MUST BE LAST)
 # ==================================================
