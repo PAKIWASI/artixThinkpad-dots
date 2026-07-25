@@ -357,8 +357,6 @@ frg() {
 }
 
 
-
-
 # SYNTAX HIGHLIGHTING (MUST BE LAST)
 # ==================================================
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
