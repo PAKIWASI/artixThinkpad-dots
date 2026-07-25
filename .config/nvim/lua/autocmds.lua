@@ -52,4 +52,24 @@ vim.api.nvim_create_user_command("ReloadNoted", function()
 end, { nargs = 0 })
 
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "dart",
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.expandtab = true
+    end,
+})
+
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = "*.dart",
+    callback = function()
+        local ret = vim.fn.system({ 'tmux', 'send-keys', '-t', 'dartvm', 'r' })
+        if vim.v.shell_error ~= 0 then
+            vim.notify(ret, vim.log.levels.ERROR)
+        end
+    end,
+})
 
