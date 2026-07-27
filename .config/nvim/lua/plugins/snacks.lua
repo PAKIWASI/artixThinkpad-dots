@@ -1,5 +1,3 @@
-
-
 require("snacks").setup({
     image        = { enabled = false },
     explorer     = { enabled = false },
@@ -15,8 +13,14 @@ require("snacks").setup({
     statuscolumn = { enabled = true },
     lazygit      = { enabled = true },
     picker       = {
-        ui_select = true,
-        win = {    -- TODO: how does this work with flash? what does this do?
+        sources = {
+            projects = {
+                dev = { "~/Documents/projects" },
+                max_depth = 3,
+            },
+        },
+        ui_select = true, -- add this
+        win = {           -- TODO: how does this work with flash?
             input = {
                 keys = {
                     ["<A-s>"] = { "flash", mode = { "n", "i" } },
@@ -237,5 +241,3 @@ map("n", "<leader>fT", function()
         win = require("utils.win").float,
     })
 end, { desc = "Floating Terminal (root)" })
-
-
