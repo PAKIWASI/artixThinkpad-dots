@@ -1,7 +1,6 @@
 require("snacks").setup({
     image        = { enabled = false },
     explorer     = { enabled = false },
-
     notifier     = { enabled = true },
     words        = { enabled = true },
     bigfile      = { enabled = true },
