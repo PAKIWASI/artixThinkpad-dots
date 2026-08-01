@@ -44,6 +44,8 @@ vim.pack.add({
 })
 require("plugins.treesitter")
 
+-- mason intalled prettier init
+require('lsp.prettier')
 
 -- git signs
 vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
