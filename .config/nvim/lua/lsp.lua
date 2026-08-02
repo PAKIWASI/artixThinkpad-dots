@@ -93,6 +93,8 @@ for _, name in ipairs(servers) do
 end
 
 
+
+
 -- diagnostic ui config
 vim.diagnostic.config({
     virtual_text = {

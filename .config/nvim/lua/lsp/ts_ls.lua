@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         map("<leader>cA", function ()
             vim.cmd('LspTypescriptSourceAction')
-        end, "Extended Code Action")
+        end, "Code Action")
 
     end
 })
