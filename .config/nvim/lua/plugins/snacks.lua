@@ -15,7 +15,7 @@ require("snacks").setup({
         sources = {
             projects = {
                 dev = { "~/Documents/projects" },
-                max_depth = 3,
+                max_depth = 4,
             },
         },
         ui_select = true, -- add this
