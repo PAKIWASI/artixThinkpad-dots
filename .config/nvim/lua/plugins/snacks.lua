@@ -16,6 +16,7 @@ require("snacks").setup({
             projects = {
                 dev = { "~/Documents/projects" },
                 max_depth = 4,
+                hidden = true,
             },
         },
         ui_select = true, -- add this
@@ -60,12 +61,7 @@ require("snacks").setup({
                     key = "c",
                     desc = "Config",
                     icon = " ",
-                    action = function()
-                        Snacks.picker.files({
-                            cwd = vim.fn
-                                .stdpath("config")
-                        })
-                    end
+                    action = function() require('utils.config_picker').pick() end
                 },
                 { key = "P", desc = "Pack", icon = " ", action = function() vim.pack.update() end },
                 { key = "m", desc = "Mason", icon = " ", action = function() vim.cmd("Mason") end },
