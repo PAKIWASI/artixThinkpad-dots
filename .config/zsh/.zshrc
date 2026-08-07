@@ -244,6 +244,7 @@ alias camera='guvcview'
 alias f='fetch'
 alias ff='clear && fastfetch'
 alias n='nvim'
+alias lg='lazygit'
 alias nd='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim'
 alias ndc='VIMRUNTIME=/home/wasi/Documents/projects/foss/neovim/runtime /home/wasi/Documents/projects/foss/neovim/build/bin/nvim --clean'
 alias C='cmake -G Ninja -S . -B build/'
@@ -291,7 +292,6 @@ alias las='eza -la --icons --git --total-size'
 alias lm='eza -l --sort=modified --icons --git'
 alias lz='eza -l --sort=size --icons --git'
 alias lx='eza -l --sort=extension --icons --git'
-alias lg='eza -l --git --git-ignore --git-repos --icons'
 
 lt() {
   if [[ $# -eq 0 ]]; then
