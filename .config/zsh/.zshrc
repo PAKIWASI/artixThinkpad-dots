@@ -260,7 +260,7 @@ alias c='clear'
 # safety
 alias cp='cp -v'
 alias mv='mv -v'
-alias rm='rm -v'
+alias rm='rm -Iv'
 
 # dotfiles
 alias dots='/usr/bin/git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME'
