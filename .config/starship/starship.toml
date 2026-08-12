@@ -107,7 +107,7 @@ disabled = false
 format = "[$path]($style)"
 style = "bold fg:#8be9fd"
 truncate_to_repo = false
-home_symbol = " " 
+home_symbol = " "
 
 [git_branch]
 format = " [  $branch](fg:#e697e6)"
@@ -132,14 +132,15 @@ version_format = "${raw}"
 [lua]
 format = " [lua](italic) [${symbol}]($style)"
 style = "bold bright-yellow"
-symbol = "⨀ "
+symbol = " "
 version_format = "${raw}"
 detect_extensions = ["lua"]
 
 [nodejs]
 detect_files = ["package-lock.json", "yarn.lock"]
 detect_folders = ["node_modules"]
-format = "[ ](bold bright-green)"
+format = "[${symbol}](bold bright-green)"
+symbol = "󰎙 "
 version_format = "${raw}"
 detect_extensions = ["js", "ts", "jsx", "tsx"]
 
@@ -251,8 +252,8 @@ symbol = "◩ "
 
 [golang]
 style = "bold bright-blue"
-format = " go [$symbol]($style)"
-symbol = "∩ "
+format = "[$symbol]($style)"
+symbol = " "
 
 [haskell]
 style = "bold bright-yellow"
