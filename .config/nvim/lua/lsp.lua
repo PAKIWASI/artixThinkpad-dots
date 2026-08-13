@@ -73,7 +73,6 @@ local servers = {
     "ts_ls",
     "lua_ls",
     "gopls",
-    "dartls",
 }
 
 
