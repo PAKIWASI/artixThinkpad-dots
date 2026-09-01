@@ -1,10 +1,10 @@
 #!/usr/bin/zsh
 
-# C99 CMake Ninja Project Setup and Build Script
+# C11 CMake Ninja Project Setup and Build Script
 
 set -e
 
-PROJECT_NAME="${1:-C99proj}"
+PROJECT_NAME="${1:-C11proj}"
 
 # Colors
 RED='\033[0;31m'
@@ -12,7 +12,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-echo "${GREEN}Setting up C99 CMake Ninja project: ${PROJECT_NAME}${NC}"
+echo "${GREEN}Setting up C11 CMake Ninja project: ${PROJECT_NAME}${NC}"
 
 # Check dependencies
 echo "${YELLOW}Checking dependencies...${NC}"
