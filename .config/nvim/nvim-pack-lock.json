@@ -58,7 +58,7 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "nvim-dap": {
-      "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
+      "rev": "c9a0738e45f1bd41d792a126941348dce661cf9b",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "16286347bdba1333c7d124d9de9fe6630731b2b2",
+      "rev": "ee1e369181a9e64904cdd7b739e98c70778cfc71",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "19071296d3d643b48615ee574a20e8a03ac40872",
+      "rev": "427e9222363d07c32d6db6169e4049c28d58d141",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
