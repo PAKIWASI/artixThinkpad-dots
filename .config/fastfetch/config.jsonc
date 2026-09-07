@@ -95,7 +95,7 @@
       "type": "disk",
       "key": "{#green}│ {#blue}󱦟 OS Age ",
       "folders": "/",
-      "format": "{#italic_bright_light_black}{days} days                      {#green}│"
+      "format": "{#italic_bright_light_black}{days} days                     {#green}│"
     },
     {
       "type": "custom",

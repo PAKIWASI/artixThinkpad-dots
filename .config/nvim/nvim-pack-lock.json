@@ -70,7 +70,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "84252f9832fb5b9024fe9f7258e7c2aff915e6fb",
+      "rev": "615d7b2712efb2f530a83a9d0466acafba6b1d6f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "41416e81a6c7f4af4984395bfe0cd8d174e70976",
+      "rev": "0d0969030ad955b510d7c8012b40252a25c12a6d",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
