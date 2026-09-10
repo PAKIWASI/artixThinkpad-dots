@@ -18,7 +18,7 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
+      "rev": "f2421c550618d257048afa650413d9e542ddbe67",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "40276c4df7e6bdce6801d6c035c6227f9115a855",
+      "rev": "b5576cd62899a1a478d0e67ef3d378ee55dba82d",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "615d7b2712efb2f530a83a9d0466acafba6b1d6f",
+      "rev": "84b6b6c3f13cb34a6c8a0354b0da4c67d8ccf867",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "0d0969030ad955b510d7c8012b40252a25c12a6d",
+      "rev": "d4d59cb369da46b95699bd2200efbcffc6dadb3b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
