@@ -17,14 +17,6 @@ vim.pack.add({ "https://github.com/williamboman/mason-lspconfig.nvim" })
 require('plugins.mason-lspconfig')
 
 
--- nvim-dap setup
-vim.pack.add({ "https://github.com/mfussenegger/nvim-dap" })
-vim.pack.add({ "https://github.com/nvim-neotest/nvim-nio" })
-vim.pack.add({ "https://github.com/rcarriga/nvim-dap-ui" })
-vim.pack.add({ "https://github.com/theHamsta/nvim-dap-virtual-text" })
-require("plugins.dap")
-
-
 -- blink.cmp
 vim.pack.add({
     {
@@ -117,9 +109,9 @@ for _, plugin in ipairs(disabled_built_ins) do
 end
 
 
--- dev plugin
-vim.opt.runtimepath:append("~/Documents/projects/lua/noted.nvim")
-require("noted").setup({})
+-- -- dev plugin
+-- vim.opt.runtimepath:append("~/Documents/projects/lua/noted.nvim")
+-- require("noted").setup({})
 
 
 -- Snacks slop - too much shit but I depend on it
