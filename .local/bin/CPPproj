@@ -66,6 +66,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 message(STATUS "CPP Compiler: \${CMAKE_CXX_COMPILER}")
 
@@ -198,15 +199,16 @@ Diagnostics:
       - portability-*
       - readability-*
     Remove:
-      # - readability-magic-numbers
       - readability-identifier-length
-      # - readability-function-cognitive-complexity
+      - readability-function-cognitive-complexity
 
-      # - modernize-use-trailing-return-type
+      - bugprone-easily-swappable-parameters
 
-      # - bugprone-easily-swappable-parameters
-
-      # - cppcoreguidelines-avoid-magic-numbers
+      - cppcoreguidelines-avoid-magic-numbers
+      - cppcoreguidelines-pro-bounds-constant-array-index
+      - cppcoreguidelines-non-private-member-variables-in-classes
+ 
+      - cert-dcl03-c
 EOF
 
 
