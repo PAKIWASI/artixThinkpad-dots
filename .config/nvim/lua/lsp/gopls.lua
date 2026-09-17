@@ -1,4 +1,3 @@
-
 ---@type vim.lsp.Config
 local config = {
     settings = {
@@ -7,6 +6,8 @@ local config = {
                 unusedparams = true,
                 shadow = true,
                 nilness = true,
+                modernize = true,
+                fillreturns = true,
                 unusedwrite = true,
             },
             staticcheck = true,
@@ -19,6 +20,8 @@ local config = {
                 compositeLiteralFields = true,
                 constantValues = true,
                 parameterNames = true,
+                compositeLiteralTypes = true,
+                functionTypeParameters = true,
                 rangeVariableTypes = true,
             },
         },
