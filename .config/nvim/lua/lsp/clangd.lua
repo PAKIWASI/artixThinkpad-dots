@@ -14,7 +14,8 @@ local config = {    -- we do this because we want to register the autocmd after 
         "--header-insertion=iwyu",
         "--completion-style=detailed",
         "--fallback-style=llvm",
-        "--query-driver=/usr/bin/clang*",
+        -- "--query-driver=/usr/bin/clang*",
+        "--query-driver=/usr/bin/clang*,/usr/bin/avr-gcc*",
     },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     -- capabilities = {

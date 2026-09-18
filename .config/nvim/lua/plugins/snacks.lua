@@ -14,7 +14,7 @@ require("snacks").setup({
     picker       = {
         sources = {
             projects = {
-                dev = { "~/Documents/projects" },
+                dev = { "~/Projects" },
                 max_depth = 4,
                 hidden = true,
             },
