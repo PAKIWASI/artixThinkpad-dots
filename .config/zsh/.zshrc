@@ -160,6 +160,7 @@ export FZF_ALT_C_OPTS="
   --preview 'eza --tree --level=2 --icons --color=always {}'
 "
 
+# TODO: this is dogshit
 # FZF CTRL-R HISTORY SEARCH
 # ==================================================
 fzf-history() {

@@ -18,9 +18,6 @@ local config = {    -- we do this because we want to register the autocmd after 
         "--query-driver=/usr/bin/clang*,/usr/bin/avr-gcc*",
     },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-    -- capabilities = {
-    --     offsetEncoding = { "utf-8", "utf-16" },
-    -- },
     single_file_support = true,
 }
 
@@ -53,6 +50,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end
             end)
         end, "Create Source/Header Pair")
+
+        -- TODO: Create function def in the corresponding .c file for this function dec in the .h file
+        map("<leader>ci", function ()
+
+        end, "Create Function Definiton")
 
         map("<leader>cb", function()
             Snacks.terminal("ninja -C build" .. shell_jflag .. "; exec $SHELL", { win = float })

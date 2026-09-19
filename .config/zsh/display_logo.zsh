@@ -23,14 +23,3 @@ fi
 
 
 
-# # tmux cursor fix
-# if [[ -n "$TMUX" ]]; then
-#   _tmux_cursor_fix() { echo -ne '\e[5 q'; }
-#   precmd_functions+=(_tmux_cursor_fix)
-#
-#   zle-keymap-select() {
-#     [[ $KEYMAP == vicmd ]] && echo -ne '\e[1 q' || echo -ne '\e[5 q'
-#     zle reset-prompt
-#   }
-#   zle -N zle-keymap-select
-# fi

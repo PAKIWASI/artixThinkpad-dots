@@ -6,9 +6,8 @@ local M = {}
 
 
 
--- function to manually switch between header/src
--- requires src/ include/ dir structure
-local function manual_switcher(bufnr)
+-- returns the corresponding file (.h -> .c or .c -> .h etc)
+function M.find_corresponding(bufnr)
     local extensions = {
         c   = { "h" },
         h   = { "c" },
@@ -24,7 +23,7 @@ local function manual_switcher(bufnr)
 
     if not targets then
         vim.notify("No known pair for: " .. ext, vim.log.levels.WARN)
-        return
+        return false
     end
 
     local root = require("utils.root").get(bufnr)
@@ -34,8 +33,9 @@ local function manual_switcher(bufnr)
         for _, dir in ipairs({ "include", "src", "." }) do
             local candidate = root .. "/" .. dir .. "/" .. base .. "." .. target_ext
             if vim.fn.filereadable(candidate) == 1 then
-                vim.cmd("edit " .. candidate)
-                return
+                -- vim.cmd("edit " .. candidate)
+                -- return
+                return candidate
             end
         end
     end
@@ -43,12 +43,14 @@ local function manual_switcher(bufnr)
     vim.notify("No corresponding file found for: " .. base, vim.log.levels.WARN)
 end
 
-
 -- check if we can get LSP switch, if not do manual
 function M.switcher(bufnr)
     local client = vim.lsp.get_clients({ bufnr = 0, name = "clangd" })[1]
     if not client then
-        manual_switcher()
+        local found = M.find_corresponding(bufnr)
+        if found then
+            vim.cmd("edit " .. found)
+        end
         return
     end
 
@@ -57,7 +59,10 @@ function M.switcher(bufnr)
         vim.lsp.util.make_text_document_params(),
         function(err, result)
             if err or not result or result == "" then
-                manual_switcher(bufnr)
+                local found = M.find_corresponding(bufnr)
+                if found then
+                    vim.cmd("edit " .. found)
+                end
             else
                 vim.cmd("edit " .. vim.uri_to_fname(result))
             end
