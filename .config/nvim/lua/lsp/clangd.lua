@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- TODO: Create function def in the corresponding .c file for this function dec in the .h file
         map("<leader>ci", function ()
-
+            require("utils.create_func_def").create_func_def(ev.buf)
         end, "Create Function Definiton")
 
         map("<leader>cb", function()
