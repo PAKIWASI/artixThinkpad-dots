@@ -42,7 +42,7 @@
     {
       "type": "terminal",
       "key": "{#cyan}│ {#magenta} Terminal",
-      "format": "{#italic_bright_light_black}tmux                        {#cyan}│"
+      "format": "{#italic_bright_light_black}kitty                       {#cyan}│"
     },
     {
       "type": "shell",
