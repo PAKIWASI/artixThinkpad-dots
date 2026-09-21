@@ -51,11 +51,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end)
         end, "Create Source/Header Pair")
 
-        -- TODO: Create function def in the corresponding .c file for this function dec in the .h file
-        map("<leader>ci", function ()
-            require("utils.create_func_def").create_func_def(ev.buf)
-        end, "Create Function Definiton")
-
         map("<leader>cb", function()
             Snacks.terminal("ninja -C build" .. shell_jflag .. "; exec $SHELL", { win = float })
         end, "Build Project (Ninja)")
