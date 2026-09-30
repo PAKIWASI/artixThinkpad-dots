@@ -1,4 +1,4 @@
 type            = process
-command         = /usr/bin/kanata
+command         = /usr/bin/kanata -n
 restart         = true
 smooth-recovery = true

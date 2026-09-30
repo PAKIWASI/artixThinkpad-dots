@@ -4,9 +4,9 @@
 
 (defsrc
   tab                                    i
-        a       s    d    f    g    h    j    k    l    ;    '    \
-  caps                          spc
-  lsft              v                                  n  m
+  caps      a       s    d    f    g    h    j    k    l    ;    '
+  lsft              v                                  n  m       rsft
+                                spc
 )
 
 (defalias
@@ -25,6 +25,8 @@
   MOD_CAPS bspc
 
   MOD_LSFT (tap-hold 50 250 esc (layer-while-held arrow))
+
+  MOD_RSFT \
 
   MOD_SPC  (tap-hold 50 250 spc (layer-while-held nav))
 
@@ -45,8 +47,8 @@
   NAV_L (tap-hold 50 250 9 ralt)
   NAV_colon 0
   NAV_QUOTE -
-  NAV_SLASH =
   NAV_TAB grv
+  NAV_RSFT =
 )
 
 (defalias
@@ -65,23 +67,22 @@
 
 (deflayer base
   tab                                @DOUBLE_I
-  @MOD_A @MOD_S @MOD_D @MOD_F  g   h    @MOD_J @MOD_K @MOD_L @MOD_colon ' \
-  @MOD_CAPS           @MOD_SPC
-  @MOD_LSFT               @DOUBLE_V       @MOD_N     @MOD_M
+  @MOD_CAPS   @MOD_A @MOD_S @MOD_D @MOD_F  g   h    @MOD_J @MOD_K @MOD_L @MOD_colon '
+  @MOD_LSFT               @DOUBLE_V       @MOD_N     @MOD_M         @MOD_RSFT
+                                            @MOD_SPC
 )
 
 (deflayer nav
   @NAV_TAB                                @DOUBLE_I
-  @NAV_A @NAV_S @NAV_D @NAV_F @NAV_G @NAV_H @NAV_J @NAV_K @NAV_L @NAV_colon @NAV_QUOTE @NAV_SLASH
-  @MOD_CAPS       _
-  @MOD_LSFT     @DOUBLE_V       @MOD_N       @MOD_M
+  @MOD_CAPS  @NAV_A @NAV_S @NAV_D @NAV_F @NAV_G @NAV_H @NAV_J @NAV_K @NAV_L @NAV_colon @NAV_QUOTE
+  @MOD_LSFT     @DOUBLE_V       @MOD_N       @MOD_M    @NAV_RSFT
+                                                    _
 )
 
 (deflayer arrow
   _                                         _
-  _ _ _ _ _ @ARROW_H @ARROW_J @ARROW_K @ARROW_L _ _ _ 
-  _       _
-  _     _      _   _
+  _ _ _ _ _ _ @ARROW_H @ARROW_J @ARROW_K @ARROW_L _ _
+  _     _      _   _            _
+                            _
 )
-
 
