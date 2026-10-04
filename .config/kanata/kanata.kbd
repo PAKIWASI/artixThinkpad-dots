@@ -1,3 +1,6 @@
+;; kanata config for all my non-programmable boards:
+;; the kinesis freestyle 2 and the thinkpad(euro) keyboards
+
 (defcfg
   process-unmapped-keys yes
 )
@@ -5,7 +8,7 @@
 (defsrc
   tab                                    i
   caps      a       s    d    f    g    h    j    k    l    ;    '
-  lsft              v                                  n  m       rsft
+  lsft   <           v                                  n  m       rsft
                                 spc
 )
 
@@ -21,16 +24,18 @@
   MOD_L (tap-hold 50 250 l ralt)
   MOD_colon (tap-hold 50 250 ; rmet)
 
-  ;; other ergo mods 
+  ;; other ergo mods
   MOD_CAPS bspc
 
   MOD_LSFT (tap-hold 50 250 esc (layer-while-held arrow))
+  ;; the extra key next to lsft on this euro layout thinkpad, no-op on us layout
+  MOD_EX (tap-hold 50 250 esc (layer-while-held arrow))
 
   MOD_RSFT \
 
   MOD_SPC  (tap-hold 50 250 spc (layer-while-held nav))
 
-  ;; tmux shortcuts
+  ;; tmux macros for last tab and new tab
   MOD_N (tap-hold 50 250 n (macro C-a u))
   MOD_M (tap-hold 50 250 m (macro C-a c))
 )
@@ -49,6 +54,8 @@
   NAV_QUOTE -
   NAV_TAB grv
   NAV_RSFT =
+  ;; for the freestyle 2, when i hold the left space for nav layer
+  NAV_SPC bspc
 )
 
 (defalias
@@ -68,21 +75,21 @@
 (deflayer base
   tab                                @DOUBLE_I
   @MOD_CAPS   @MOD_A @MOD_S @MOD_D @MOD_F  g   h    @MOD_J @MOD_K @MOD_L @MOD_colon '
-  @MOD_LSFT               @DOUBLE_V       @MOD_N     @MOD_M         @MOD_RSFT
-                                            @MOD_SPC
+  @MOD_LSFT @MOD_EX          @DOUBLE_V       @MOD_N     @MOD_M         @MOD_RSFT
+                                     @MOD_SPC
 )
 
 (deflayer nav
   @NAV_TAB                                @DOUBLE_I
   @MOD_CAPS  @NAV_A @NAV_S @NAV_D @NAV_F @NAV_G @NAV_H @NAV_J @NAV_K @NAV_L @NAV_colon @NAV_QUOTE
-  @MOD_LSFT     @DOUBLE_V       @MOD_N       @MOD_M    @NAV_RSFT
-                                                    _
+  @MOD_LSFT @MOD_EX   @DOUBLE_V       @MOD_N       @MOD_M    @NAV_RSFT
+                                    @NAV_SPC
 )
 
 (deflayer arrow
   _                                         _
   _ _ _ _ _ _ @ARROW_H @ARROW_J @ARROW_K @ARROW_L _ _
-  _     _      _   _            _
+  _   _    _      _   _            _
                             _
 )
 

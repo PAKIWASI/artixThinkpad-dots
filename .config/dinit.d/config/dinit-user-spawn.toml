@@ -1,3 +1,10 @@
+# userspawn runs an executable, you specify, when a user logs in. This could be a bash script, or anything else you want!
+# This can be used to launch a user instance of your init system.
+
+# userspawn works in conjunction with (e)logind, and hence, dbus. It listens for users being added or removed.
+# For every user addition, a new cgroup is created for that user and userspawn config is spawned into that cgroup.
+# Upon user removal, that cgroup is then cleaned up, as triggered by (e)logind.
+
 
 # The options provided here are not checked for validity, they are just ran for your user. If you cook them, your personal dinit process will be cooked.
 # These configs are unique to each user, one config does not affect another user.
@@ -11,4 +18,3 @@ dinit_arguments = ["--user"]
 # Enables verbose debugging options. It will flood logs, in catlog.
 verbose_debug = false
 
-# There used to be a minimal_environment_handling variable, but this was removed and now is always enabled. This is because the previous method of trying to 'inherit' environment variables, didn't actually inherit many useful env vars. Therefore, if you are not doing what will be latter metioned, ensure your services do not depend on env vars beyond (SHELL, PWD, LOGNAME, HOME, SHLVL, XDG_RUNTIME_DIR, and PATH)  For those seeking to set environment variables, please use dinit_arguments to specify an environment file, or utilise the environment file option in dinit services.
