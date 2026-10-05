@@ -54,8 +54,6 @@
   NAV_QUOTE -
   NAV_TAB grv
   NAV_RSFT =
-  ;; for the freestyle 2, when i hold the left space for nav layer
-  NAV_SPC bspc
 )
 
 (defalias
@@ -83,7 +81,7 @@
   @NAV_TAB                                @DOUBLE_I
   @MOD_CAPS  @NAV_A @NAV_S @NAV_D @NAV_F @NAV_G @NAV_H @NAV_J @NAV_K @NAV_L @NAV_colon @NAV_QUOTE
   @MOD_LSFT @MOD_EX   @DOUBLE_V       @MOD_N       @MOD_M    @NAV_RSFT
-                                    @NAV_SPC
+                                    _
 )
 
 (deflayer arrow
