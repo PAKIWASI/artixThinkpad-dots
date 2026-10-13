@@ -38,7 +38,7 @@
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "e17625cdc8c2650787467398e02c5d63a2cde966",
+      "rev": "00b5473cca4db5b410ff4bae724e3b6e21f2687f",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -67,7 +67,7 @@
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
+      "rev": "ec309a0eaff6ea967e58c275996155ab5c16938d",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil-git-signs.nvim": {
