@@ -22,7 +22,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
+      "rev": "bbde8ef5ae46ceee2c3bd8b21fc048c5f8ffbfc0",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "lavender.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markview.nvim": {
-      "rev": "49d2cf7ced872db74083a144ded1f94fe224d09a",
+      "rev": "ecc5a8867daa1856f8bcc5fdbceca8f5a5ce5f5d",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
@@ -58,11 +58,11 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "nvim-lspconfig": {
-      "rev": "ac062d0d01c019c0dbdb798968f3e5d8b35c3853",
+      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "ca581c3436fc2b236847f5b739ebc263739e5ca6",
+      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },

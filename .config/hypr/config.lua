@@ -8,6 +8,7 @@ hl.config({
 
     xwayland = {
         enabled = false,
+        force_zero_scaling = true,
     },
 
     general = {
